@@ -1,0 +1,131 @@
+nohup: ignoring input
+INFO: Namespace(adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, alpha=0.8, batch_size=8, beamFreq=1000, beam_size=8, clip_c=1.0, datasets=['/data2/Europarl_1x2/small/corpus.bpe.de', '/data2/Europarl_1x2/small/corpus.bpe.en'], datasets_mono=['/data2/Europarl_1x2/large/corpus.bpe.de', '/data2/Europarl_1x2/large/corpus.bpe.en'], dec_base_recurrence_transition_depth=2, dec_deep_context=False, dec_depth=1, dec_high_recurrence_transition_depth=1, decay_c=0.0, dictionaries=['/data2/Europarl_1x2/large/corpus.bpe.de.json', '/data2/Europarl_1x2/large/corpus.bpe.en.json'], dim_per_factor=[256], dispFreq=1000, dropout_embedding=0.2, dropout_hidden=0.2, dropout_source=0.0, dropout_target=0.0, dual=True, embedding_size=256, enc_depth=1, enc_recurrence_transition_depth=1, factors=1, finish_after=10000000, keep_train_set_in_memory=False, label_smoothing=0.0, learning_rate=0.0001, lms=['/home/lyy/myDualLearning/LM/de.zip', '/home/lyy/myDualLearning/LM/en.zip'], map_decay_c=0.0, max_epochs=5, maxibatch_size=20, maxlen=100, model_version=0.2, n_best=False, normalize=True, optimizer='adam', output_hidden_activation='tanh', patience=10, prior_model=None, reload='latest_checkpoint', reload_training_progress=False, sampleFreq=100, saveFreq=5000, saveto='/home/lyy/myDualLearning/models/de2en/model.de2en.npz', saveto_rev='/home/lyy/myDualLearning/models/en2de/model.en2de.npz', shuffle_each_epoch=False, softmax_mixture_size=1, sort_by_length=True, source_dataset='/data2/Europarl_1x2/small/corpus.bpe.de', source_dataset_mono='/data2/Europarl_1x2/large/corpus.bpe.de', source_dicts=['/data2/Europarl_1x2/large/corpus.bpe.de.json'], source_lm=None, source_vocab_sizes=[60000], state_size=512, summaryFreq=0, summary_dir=None, target_dataset='/data2/Europarl_1x2/small/corpus.bpe.en', target_dataset_mono='/data2/Europarl_1x2/large/corpus.bpe.en', target_dict='/data2/Europarl_1x2/large/corpus.bpe.en.json', target_embedding_size=256, target_lm=None, target_vocab_size=60000, theano_compat=False, tie_decoder_embeddings=False, tie_encoder_decoder_embeddings=False, token_batch_size=0, translation_maxlen=200, use_dropout=False, use_layer_norm=False, validFreq=10000, valid_batch_size=80, valid_datasets=None, valid_script=None, valid_source_dataset=None, valid_target_dataset=None, valid_token_batch_size=0)
+INFO: Namespace(adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, alpha=0.8, batch_size=8, beamFreq=1000, beam_size=8, clip_c=1.0, datasets=['/data2/Europarl_1x2/small/corpus.bpe.de', '/data2/Europarl_1x2/small/corpus.bpe.en'], datasets_mono=['/data2/Europarl_1x2/large/corpus.bpe.de', '/data2/Europarl_1x2/large/corpus.bpe.en'], dec_base_recurrence_transition_depth=2, dec_deep_context=False, dec_depth=1, dec_high_recurrence_transition_depth=1, decay_c=0.0, dictionaries=['/data2/Europarl_1x2/large/corpus.bpe.de.json', '/data2/Europarl_1x2/large/corpus.bpe.en.json'], dim_per_factor=[256], dispFreq=1000, dropout_embedding=0.2, dropout_hidden=0.2, dropout_source=0.0, dropout_target=0.0, dual=True, embedding_size=256, enc_depth=1, enc_recurrence_transition_depth=1, factors=1, finish_after=10000000, keep_train_set_in_memory=False, label_smoothing=0.0, learning_rate=0.0001, lms=['/home/lyy/myDualLearning/LM/de.zip', '/home/lyy/myDualLearning/LM/en.zip'], map_decay_c=0.0, max_epochs=5, maxibatch_size=20, maxlen=100, model_version=0.2, n_best=False, normalize=True, optimizer='adam', output_hidden_activation='tanh', patience=10, prior_model=None, reload='latest_checkpoint', reload_training_progress=False, sampleFreq=100, saveFreq=5000, saveto='/home/lyy/myDualLearning/models/en2de/model.en2de.npz', saveto_rev='/home/lyy/myDualLearning/models/de2en/model.de2en.npz', shuffle_each_epoch=False, softmax_mixture_size=1, sort_by_length=True, source_dataset='/home/lyy/myDualLearning/models/en2de/model.en2de.npz', source_dataset_mono='/data2/Europarl_1x2/large/corpus.bpe.en', source_dicts=['/data2/Europarl_1x2/large/corpus.bpe.en.json'], source_lm=None, source_vocab_sizes=[60000], state_size=512, summaryFreq=0, summary_dir=None, target_dataset='/home/lyy/myDualLearning/models/de2en/model.de2en.npz', target_dataset_mono='/data2/Europarl_1x2/large/corpus.bpe.de', target_dict='/data2/Europarl_1x2/large/corpus.bpe.de.json', target_embedding_size=256, target_lm=None, target_vocab_size=60000, theano_compat=False, tie_decoder_embeddings=False, tie_encoder_decoder_embeddings=False, token_batch_size=0, translation_maxlen=200, use_dropout=False, use_layer_norm=False, validFreq=10000, valid_batch_size=80, valid_datasets=None, valid_script=None, valid_source_dataset=None, valid_target_dataset=None, valid_token_batch_size=0)
+2018-11-26 22:33:33.948634: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2018-11-26 22:33:34.174777: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-11-26 22:33:34.175426: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6575
+pciBusID: 0000:04:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-11-26 22:33:34.276641: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-11-26 22:33:34.277126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GT 710 major: 3 minor: 5 memoryClockRate(GHz): 0.954
+pciBusID: 0000:03:00.0
+totalMemory: 980.94MiB freeMemory: 924.25MiB
+2018-11-26 22:33:34.412945: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-11-26 22:33:34.413491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 2 with properties: 
+name: GeForce GTX 1060 6GB major: 6 minor: 1 memoryClockRate(GHz): 1.759
+pciBusID: 0000:09:00.0
+totalMemory: 5.94GiB freeMemory: 5.86GiB
+2018-11-26 22:33:34.413537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2018-11-26 22:33:34.413567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 2 
+2018-11-26 22:33:34.413579: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y N N 
+2018-11-26 22:33:34.413589: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   N Y N 
+2018-11-26 22:33:34.413598: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 2:   N N Y 
+2018-11-26 22:33:34.413619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-11-26 22:33:34.413633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1107] Ignoring gpu device (device: 1, name: GeForce GT 710, pci bus id: 0000:03:00.0, compute capability: 3.5) with Cuda multiprocessor count: 1. The minimum required count is 8. You can adjust this requirement with the env var TF_MIN_GPU_MULTIPROCESSOR_COUNT.
+2018-11-26 22:33:34.413646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 2, name: GeForce GTX 1060 6GB, pci bus id: 0000:09:00.0, compute capability: 6.1)
+2018-11-26 22:33:34.508470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-11-26 22:33:34.508539: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1107] Ignoring gpu device (device: 1, name: GeForce GT 710, pci bus id: 0000:03:00.0, compute capability: 3.5) with Cuda multiprocessor count: 1. The minimum required count is 8. You can adjust this requirement with the env var TF_MIN_GPU_MULTIPROCESSOR_COUNT.
+2018-11-26 22:33:34.508554: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 2, name: GeForce GTX 1060 6GB, pci bus id: 0000:09:00.0, compute capability: 6.1)
+2018-11-26 22:33:34.509070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-11-26 22:33:34.509097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1107] Ignoring gpu device (device: 1, name: GeForce GT 710, pci bus id: 0000:03:00.0, compute capability: 3.5) with Cuda multiprocessor count: 1. The minimum required count is 8. You can adjust this requirement with the env var TF_MIN_GPU_MULTIPROCESSOR_COUNT.
+2018-11-26 22:33:34.509110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 2, name: GeForce GTX 1060 6GB, pci bus id: 0000:09:00.0, compute capability: 6.1)
+INFO: Building model...
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/de2en
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/de2en/model.de2en.npz-50000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-50000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-50000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/en2de
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/en2de/model.en2de.npz-110000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-110000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-110000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Initial uidx for modelA =0
+INFO: Initial uidx for modelB =0
+INFO: Starting epoch 0
+INFO: lm_scores: [0.6790934515985774, 0.7082714998737459, 0.8533367328473542, 0.6607155717801434, 0.7682683893038766, 0.676703334272202, 0.6820430128185572, 0.736653166987007, 0.7082714998737459, 0.7500049265749908, 0.6607155717801434, 0.736653166987007, 0.6820430128185572, 0.7682683893038766, 0.8533367328473542, 0.676703334272202, 0.736653166987007, 0.7500049265749908, 0.7082714998737459, 0.6820430128185572, 0.7682683893038766, 0.6607155717801434, 0.8533367328473542, 0.676703334272202, 0.736653166987007, 0.7500049265749908, 0.7082714998737459, 0.6820430128185572, 0.7682683893038766, 0.6607155717801434, 0.8533367328473542, 0.676703334272202, 0.736653166987007, 0.7513769945576201, 0.7500049265749908, 0.6820430128185572, 0.7682683893038766, 0.8533367328473542, 0.6607155717801434, 0.676703334272202, 0.7082714998737459, 0.736653166987007, 0.6607155717801434, 0.6820430128185572, 0.7500049265749908, 0.676703334272202, 0.8533367328473542, 0.7682683893038766, 0.7673524278595251, 0.7502066402106196, 0.7682683893038766, 0.736653166987007, 0.6820430128185572, 0.6607155717801434, 0.676703334272202, 0.8533367328473542, 0.7082714998737459, 0.736653166987007, 0.8533367328473542, 0.6820430128185572, 0.6607155717801434, 0.7682683893038766, 0.676703334272202, 0.6332670093815966]  mean: -24.646634212  std: 25.9512367939
+ bt_scores: [-1.3926591564365687, -1.2186571304897171, -1.2371763201547685, -1.253807048451203, -1.2203051740852613, -1.2527543774078076, -1.2586295211483436, -1.20343372818066, -1.3068909029600222, -1.2864226602510578, -1.3081525840503676, -1.2047131994865976, -1.2994306560074764, -1.2947045053343635, -1.2973722630991935, -1.3264965700753455, -1.098473380128792, -1.1750967132032346, -1.1640100607307686, -1.1407220438641896, -1.1756827658812037, -1.1512575994334242, -1.1486677238343257, -1.142786858240741, -1.1423276108213818, -1.2068513735162087, -1.2230004667062466, -1.2213729118421428, -1.2354592145425154, -1.2209015460877242, -1.2290444176048454, -1.2345428435357144, -1.1440129339136442, -1.257957365825809, -1.2279957693489645, -1.2383372316671881, -1.249375735620769, -1.2520051394797929, -1.249376934961146, -1.2136933105318957, -1.3174385518780583, -1.2561737467951481, -1.304138391808551, -1.3048355583751974, -1.3013250141329469, -1.3028455278684035, -1.315695285653832, -1.3137373874746383, -1.3831222766075066, -1.3784550560235427, -1.38936411866831, -1.339071528996894, -1.3704358539896706, -1.3605620344734453, -1.3904043215690363, -1.3848494516816747, -1.3908701028948245, -1.3081852410893828, -1.3958119349457345, -1.4077274315637383, -1.4016742732291203, -1.3892999789443985, -1.3913259396899869, -1.384019920414046]  mean: 120.352171133  std: 76.3359060787
+ rk: [0.2647429299915482, 0.3228857738010533, 0.4352341222469298, 0.2778110477338742, 0.3705536766260491, 0.29081179193620016, 0.29390850602517704, 0.3486357879534737, 0.3052390193069923, 0.34271940920978117, 0.26694194061404125, 0.34837989369228617, 0.2857482790533505, 0.35567381037622864, 0.4231949336580448, 0.27606335340269256, 0.3696278575638473, 0.36498459861934585, 0.333815187752843, 0.31749000148200784, 0.3794781582668606, 0.29832093753742994, 0.45293584151101834, 0.31280529576961347, 0.36085701142532933, 0.358633666556751, 0.32201710655774746, 0.30135982788641724, 0.36752286853459826, 0.28439214820657, 0.4368605027569144, 0.2944540987106188, 0.3605199468068768, 0.3495101224809344, 0.35440478739019987, 0.29796696392140815, 0.36473956431894755, 0.4322683583819249, 0.2786970704318856, 0.29862400531138256, 0.30312948952338514, 0.33808778423057606, 0.2677447790624046, 0.28466729857980627, 0.33973893843340336, 0.280793561844081, 0.4195303291471171, 0.3518672339481737, 0.3372574869661188, 0.3244743009637872, 0.33674188770943936, 0.32150822779022686, 0.27154723945691167, 0.2564600505294257, 0.26328180310395444, 0.4056994959415485, 0.2884431793200319, 0.3276854853717291, 0.40350699928873657, 0.26408892394209815, 0.24823760277829077, 0.33675471565422166, 0.2630974794797643, 0.22980962342246813]  score_num: 6400
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: the vote         
+INFO: AFTER: it 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: it is the case .      
+INFO: AFTER: 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: .          
+INFO: AFTER: he 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: that          
+INFO: AFTER: this proposal 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: this is the case .      
+INFO: AFTER: this 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: it          
+INFO: AFTER: this is the case . 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE: this          
+INFO: AFTER: that 
+INFO: -----------------------------------------------
+INFO: SOURCE: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: BEFORE:           
+INFO: AFTER: this concludes the moment . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [0.8417968983085996, 0.7444673988014444, 0.8746400600156614, 0.7431659480328164, 0.7587260192608137, 0.8457247538864707, 0.8461703640624665, 0.8322224362582901, 0.7814451933786707, 0.7888274837138747, 0.7928908186437514, 0.6372384959252247, 0.7596879523122566, 0.7583178176790765, 0.7618363480128045, 0.8087034642102882, 0.7928908186437514, 0.6358683456856223, 0.6372384959252247, 0.7877953685813386, 0.7596879523122566, 0.7583178176790765, 0.7618363480128045, 0.8087034642102882, 0.6372384959252247, 0.7928908186437514, 0.7142065303509886, 0.7583178176790765, 0.7618363480128045, 0.7596879523122566, 0.8087034642102882, 0.5170023423490957, 0.6847722560577705, 0.6393868448065058, 0.6358683456856223, 0.7877953685813386, 0.7596879523122566, 0.8087034642102882, 0.7618363480128045, 0.7583178176790765, 0.7928908186437514, 0.6372384959252247, 0.7142065303509886, 0.7877953685813386, 0.7596879523122566, 0.7618363480128045, 0.7583178176790765, 0.8087034642102882, 0.6358683456856223, 0.6847722560577705, 0.7142065303509886, 0.7877953685813386, 0.7596879523122566, 0.7618363480128045, 0.7583178176790765, 0.8087034642102882, 0.6358683456856223, 0.5854034185291154, 0.7895709580659308, 0.7583178176790765, 0.9095963000896011, 0.7877953685813386, 0.7814451933786707, 0.8087034642102882]  mean: -30.4851082071  std: 30.5539058837
+ bt_scores: [-1.3221709651017841, -1.3026732488086787, -1.334102729047881, -1.333011238833905, -1.3163863928450918, -1.305307631598296, -1.3215867739267948, -1.3151386307455224, -1.1272818388156065, -1.112212024956744, -1.109346741873895, -1.1575239064608824, -1.1569513573174846, -1.1580835448897588, -1.1534636981910713, -1.096697774054262, -1.0946110145198915, -1.130687232560667, -1.1396979162511374, -1.137623893298337, -1.1330884264525518, -1.1242726224105597, -1.1260661420551852, -1.0557208577407218, -1.1994105928158003, -1.1939859036168738, -1.1843233159095505, -1.184078833246129, -1.1892368005161575, -1.192916901429733, -1.1949052260944293, -1.1894836961647595, -1.361463393874258, -1.3468561020097993, -1.3429323890975577, -1.35397561478425, -1.33698781353489, -1.3067751494822235, -1.3445442383218569, -1.3379357435687065, -1.3286484372472582, -1.370369050519046, -1.3531629238631413, -1.3717912192072654, -1.3755010097890128, -1.3759643402578325, -1.3771384689951995, -1.3101058153151024, -1.2172101148169698, -1.192139273422146, -1.0892637398558214, -1.2223150461653036, -1.1979594683054176, -1.2028897691798788, -1.210831674568431, -1.0735896846564508, -1.2696846318771056, -1.3053520106247047, -1.312853558655922, -1.2701339197672217, -1.3368753236484439, -1.2790006203832227, -1.3259986312533956, -1.260338443742031]  mean: 119.667449169  std: 76.6738307777
+ rk: [0.409003325626523, 0.33503926927941985, 0.432891502202953, 0.32793051065947226, 0.3437035368396327, 0.41551827678951747, 0.41261893646461434, 0.4027502228575277, 0.39969978693981534, 0.4086195819797511, 0.4124433065402223, 0.27828601544800335, 0.37636009038630847, 0.3750375451653095, 0.37877633877202943, 0.4276232165573782, 0.415390452011023, 0.28255723003636457, 0.28185121348995235, 0.4027115162054036, 0.38113267655929506, 0.3817997296611494, 0.3842558499992067, 0.43581859982008625, 0.2699086781770198, 0.39551547419162647, 0.3345005610988808, 0.3698384874940355, 0.3716217183070122, 0.36916698156385885, 0.40798172614934475, 0.17570513464632476, 0.2755251260713649, 0.24213825544324485, 0.24010819872898637, 0.35944117190822095, 0.3403527991428274, 0.3856077414717859, 0.3405602307458723, 0.33906710542952, 0.36858296746554964, 0.23571698663637064, 0.30073263950816265, 0.3558780510236179, 0.33265015989200286, 0.3342762103586772, 0.3312265603442214, 0.3849416083052101, 0.26525265358510397, 0.3093899501617873, 0.3535124763096266, 0.3857732856320103, 0.3681584681887219, 0.368891124574268, 0.3644879192295751, 0.43224483443694045, 0.25475775017307684, 0.20725233269835147, 0.36908605472156036, 0.35262747018981694, 0.4603019753419923, 0.37443617078842645, 0.35995642845225756, 0.39489508261982437]  score_num: 6400
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet heute um 11.00 Uhr statt .      
+INFO: AFTER: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 18.30 Uhr .        
+INFO: AFTER: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet morgen um 11.00 Uhr statt .      
+INFO: AFTER: die Abstimmung findet um 11.00 Uhr statt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 11.00 Uhr .        
+INFO: AFTER: die Abstimmung findet um gestrigen Protokoll . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 11.30 Uhr .        
+INFO: AFTER: die Abstimmung findet um 18.30 Uhr statt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 18.30 Uhr statt .       
+INFO: AFTER: die Abstimmung findet um .30 Uhr . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 11.00 Uhr statt .       
+INFO: AFTER: die Abstimmung findet um 11.30 Uhr statt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: the vote will take place at 11.30 a.m. 
+INFO: BEFORE: die Abstimmung findet um 11.30 Uhr statt .       
+INFO: AFTER: die Abstimmung findet unterbrochen um 11.00 Uhr statt . 
+INFO: -----------------------------------------------
