@@ -72,20 +72,21 @@ class RNNModel(object):
                 self.inputs.y, self.inputs.y_mask, config.label_smoothing,
                 training=self.inputs.training)
             self._loss_per_sentence = self.loss_layer.forward(self._logits)
-            self._loss_per_sentence_with_rk = self._loss_per_sentence * self.inputs.rk # Does this True?
-            self._loss = tf.reduce_mean(self._loss_per_sentence_with_rk, keep_dims=False) 
+            self._loss_per_sentence_with_rk = self._loss_per_sentence * self.inputs.rk
+            self._loss = tf.reduce_mean(self._loss_per_sentence, keep_dims=False) 
+            self._loss_with_rk = tf.reduce_mean(self._loss_per_sentence_with_rk, keep_dims=False) 
 
     @property
     def loss_per_sentence(self):
         return self._loss_per_sentence
 
     @property
-    def loss(self):
-        return self._loss
+    def loss_per_sentence_with_rk(self):
+        return self._loss_per_sentence_with_rk
 
     @property
-    def logits(self):
-        return self._logits
+    def loss(self):
+        return self._loss_with_rk
 
 
 class Decoder(object):

@@ -37,10 +37,6 @@ class ModelUpdater(object):
                     all_grad_vars.append(gradients)
                     weight = self.replica_weights[i]
                     weighted_losses.append(loss*weight)
-                    
-                    loss_per_sentence = self._regularize(replicas[i].loss_per_sentence, config.decay_c,
-                                            config.map_decay_c)
-                    gradients_per_sentence = optimizer.compute_gradients(loss_per_sentence)
 
         self.loss = sum(weighted_losses) / sum(self.replica_weights)
 

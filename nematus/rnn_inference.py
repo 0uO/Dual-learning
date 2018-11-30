@@ -61,7 +61,30 @@ def beam_search(session, models, x, x_mask, beam_size, graph=None):
     return _reconstruct_hypotheses(ys, parents, costs, beam_size)
 
 
-def get_logits(session, model, x, x_mask, y, y_mask, graph=None):
+def get_loss(session, model, x, x_mask, y, y_mask, rk=None, graph=None):
+    """get logits of output from a RNNModel with inputs.
+
+    Args:
+        session: TensorFlow session.
+        model: a RNNModel object.
+        x: Numpy array with shape (factors, max_seq_len, batch_size).
+        x_mask: Numpy array with shape (max_seq_len, batch_size).
+        y:
+        y_mask:
+        graph: a SampleGraph object (to allow reuse if sampling repeatedly).
+
+    Returns:
+        A float.
+    """
+    if rk==None :
+        rk = [1.]*x.shape[-1]
+    feed_dict = {model.inputs.x: x, model.inputs.x_mask: x_mask, model.inputs.y: y, model.inputs.y_mask: y_mask, model.inputs.rk: rk}
+    if graph is None:
+        graph = LossGraph(model)
+    logits = session.run(graph.outputs, feed_dict=feed_dict)
+    return logits
+
+def get_losses(session, model, x, x_mask, y, y_mask, graph=None):
     """get logits of output from a RNNModel with inputs.
 
     Args:
@@ -78,28 +101,7 @@ def get_logits(session, model, x, x_mask, y, y_mask, graph=None):
     """
     feed_dict = {model.inputs.x: x, model.inputs.x_mask: x_mask, model.inputs.y: y, model.inputs.y_mask: y_mask}
     if graph is None:
-        graph = LogitsGraph(model)
-    logits = session.run(graph.outputs, feed_dict=feed_dict)
-    return logits
-
-def get_logits_with_rk(session, model, x, x_mask, y, y_mask, rk, graph=None):
-    """get logits of output from a RNNModel with inputs.
-
-    Args:
-        session: TensorFlow session.
-        model: a RNNModel object.
-        x: Numpy array with shape (factors, max_seq_len, batch_size).
-        x_mask: Numpy array with shape (max_seq_len, batch_size).
-        y:
-        y_mask:
-        graph: a SampleGraph object (to allow reuse if sampling repeatedly).
-
-    Returns:
-        A float.
-    """
-    feed_dict = {model.inputs.x: x, model.inputs.x_mask: x_mask, model.inputs.y: y, model.inputs.y_mask: y_mask, model.inputs.rk:rk}
-    if graph is None:
-        graph = LogitsGraph_with_rk(model)
+        graph = LossesGraph(model)
     logits = session.run(graph.outputs, feed_dict=feed_dict)
     return logits
 
@@ -166,17 +168,17 @@ class BeamSearchGraph(object):
         return self._beam_size
 
 
-class LogitsGraph(object):
+class LossGraph(object):
     def __init__(self, model):
-        self._logits = construct_logits_ops(model)
+        self._logits = construct_loss_ops(model)
 
     @property
     def outputs(self):
         return (self._logits)
 
-class LogitsGraph_with_rk(object):
+class LossesGraph(object):
     def __init__(self, model):
-        self._logits = construct_logits_ops_with_rk(model)
+        self._logits = construct_loss_per_sentence_ops(model)
 
     @property
     def outputs(self):
@@ -385,7 +387,19 @@ def construct_beam_search_ops(models, beam_size):
     return sampled_ys, parents, cost
 
 
-def construct_logits_ops(model):
+def construct_loss_ops(model):
+    """Builds a graph fragment for get logits over a RNNModel.
+
+    Args:
+        model: a RNNModel.
+
+    Returns:
+        A Tensor with dtype float.
+    """
+    return model.loss
+
+
+def construct_loss_per_sentence_ops(model):
     """Builds a graph fragment for get logits over a RNNModel.
 
     Args:
@@ -395,15 +409,3 @@ def construct_logits_ops(model):
         A Tensor with dtype float.
     """
     return model.loss_per_sentence
-
-
-def construct_logits_ops_with_rk(model):
-    """Builds a graph fragment for get logits over a RNNModel.
-
-    Args:
-        model: a RNNModel.
-
-    Returns:
-        A Tensor with dtype float.
-    """
-    return model.loss_per_sentence_with_rk

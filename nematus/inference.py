@@ -26,7 +26,8 @@ class InferenceModelSet(object):
         self._models = models
         self._cached_sample_graph = None
         self._cached_beam_search_graph = None
-        self._cached_logits_graph = None
+        self._cached_loss_graph = None
+        self._cached_losses_graph = None
 
     def sample(self, session, x, x_mask):
         # Sampling is not implemented for ensembles, so just use the first
@@ -45,12 +46,18 @@ class InferenceModelSet(object):
         return rnn_inference.beam_search(session, self._models, x, x_mask,
                                          beam_size,
                                          self._cached_beam_search_graph)
-    def get_logits(self, session, x, x_mask, y, y_mask):
+    def get_loss(self, session, x, x_mask, y, y_mask, rk=None):
         model = self._models[0]
-        if self._cached_logits_graph is None:
-            self._cached_logits_graph = rnn_inference.LogitsGraph(model)
-        return rnn_inference.get_logits(session, model, x, x_mask, y, y_mask,
-                                    self._cached_logits_graph)
+        if self._cached_loss_graph is None:
+            self._cached_loss_graph = rnn_inference.LossGraph(model)
+        return rnn_inference.get_loss(session, model, x, x_mask, y, y_mask, rk,
+                                    self._cached_loss_graph)
+    def get_losses(self, session, x, x_mask, y, y_mask):
+        model = self._models[0]
+        if self._cached_losses_graph is None:
+            self._cached_losses_graph = rnn_inference.LossesGraph(model)
+        return rnn_inference.get_losses(session, model, x, x_mask, y, y_mask,
+                                    self._cached_losses_graph)
 
 def translate_file(input_file, output_file, session, models, configs,
                    beam_size=12, nbest=False, minibatch_size=80,
