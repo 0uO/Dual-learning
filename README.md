@@ -39,6 +39,7 @@ Then set the parameter in /test/test_train_dual.sh , especial :
 - SdataPath
 - modelDir
 - LMDir
+
 Description as their name. And you could write your own training script, see the following new added configs for dual learning:
 
 #### dual; parameters for dual learning.
@@ -55,13 +56,14 @@ Description as their name. And you could write your own training script, see the
 | --lms | language models (one for source, and one for target.) |
 | --source_dataset_mono | parallel training corpus (source) |
 | --target_dataset_mono | parallel training corpus (target) |
-| --datasets_mono | parallel training corpus (one for source, and one for target.) |
+| --datasets_mono | parallel training corpus (one for source, and one for target.) | 
+
 For replaying the paper of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
 For replaying the paper [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
 
 #### TODO
 
-The result of dual learning isn't good, while joint training works well, later I would plus the resule.
+The result of dual learning isn't good, while joint training works well, later I would post the results.
 
 #### History
 
