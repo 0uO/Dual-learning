@@ -86,6 +86,10 @@ class RNNModel(object):
 
     @property
     def loss(self):
+        return self._loss
+
+    @property
+    def loss_with_rk(self):
         return self._loss_with_rk
 
 

@@ -88,6 +88,7 @@ class KenLM(AbstractLM):
 
         self.kenlm_model = kenlm.Model(model_binary_path)
 
+
     def train(self, path_to_text):
         # also stores binary in temp directory
         self.tmpdir = tempfile.mkdtemp(dir=TEMP_DIR)
@@ -121,6 +122,8 @@ class KenLM(AbstractLM):
         #subprocess.check_call('rm %s' % model_arpa_path)
 
         self.kenlm_model = kenlm.Model(model_binary_path)
+
+
 
     def save(self, model_file_name):
         """

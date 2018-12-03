@@ -26,6 +26,8 @@ class ModelUpdater(object):
 
         weighted_losses = []
         all_grad_vars = []
+        weighted_losses_with_rk = []
+        all_grad_vars_with_rk = []
         for i in range(len(self.replicas)):
             device_type = "GPU" if num_gpus > 0 else "CPU"
             device_spec = tf.DeviceSpec(device_type=device_type, device_index=i)
@@ -35,10 +37,19 @@ class ModelUpdater(object):
                                             config.map_decay_c)
                     gradients = optimizer.compute_gradients(loss)
                     all_grad_vars.append(gradients)
+                    
+                    loss_with_rk = self._regularize(replicas[i].loss_with_rk, config.decay_c,
+                                            config.map_decay_c)
+                    gradients_with_rk = optimizer.compute_gradients(loss_with_rk)
+                    all_grad_vars_with_rk.append(gradients_with_rk)
+
                     weight = self.replica_weights[i]
+
                     weighted_losses.append(loss*weight)
+                    weighted_losses_with_rk.append(loss_with_rk*weight)
 
         self.loss = sum(weighted_losses) / sum(self.replica_weights)
+        self.loss_with_rk = sum(weighted_losses_with_rk) / sum(self.replica_weights)
 
         grad_vars = self._average_gradients(all_grad_vars, self.replica_weights)
         grads, varss = zip(*grad_vars)
@@ -50,7 +61,18 @@ class ModelUpdater(object):
         self.apply_grads = optimizer.apply_gradients(
             grad_vars, global_step=self.global_step)
 
+        grad_vars_with_rk = self._average_gradients(all_grad_vars_with_rk, self.replica_weights)
+        grads_with_rk, varss_with_rk = zip(*grad_vars_with_rk)
+        clipped_grads_with_rk, global_norm_with_rk = tf.clip_by_global_norm(
+            grads_with_rk, clip_norm=config.clip_c)
+        # Might be interesting to see how the global norm changes over time,
+        # attach a summary?
+        grad_vars_with_rk = zip(clipped_grads_with_rk, varss_with_rk)
+        self.apply_grads_with_rk = optimizer.apply_gradients(
+            grad_vars_with_rk, global_step=self.global_step)
+
         tf.summary.scalar(name='mean_cost', tensor=self.loss)
+        tf.summary.scalar(name='mean_cost_with_rk', tensor=self.loss_with_rk)
         tf.summary.scalar(name='t', tensor=self.global_step)
         self.merged = tf.summary.merge_all()
 
@@ -147,7 +169,7 @@ class ModelUpdater(object):
             feed_dict[self.replicas[i].inputs.training] = True
             feed_dict[self.replicas[i].inputs.rk] = split_rk[j]
 
-        out = [self.global_step, self.apply_grads, self.loss]
+        out = [self.global_step, self.apply_grads_with_rk, self.loss_with_rk]
         if write_summary:
             out += [self.merged]
         out_values = session.run(out, feed_dict=feed_dict)

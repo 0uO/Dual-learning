@@ -62,20 +62,7 @@ def beam_search(session, models, x, x_mask, beam_size, graph=None):
 
 
 def get_loss(session, model, x, x_mask, y, y_mask, rk=None, graph=None):
-    """get logits of output from a RNNModel with inputs.
-
-    Args:
-        session: TensorFlow session.
-        model: a RNNModel object.
-        x: Numpy array with shape (factors, max_seq_len, batch_size).
-        x_mask: Numpy array with shape (max_seq_len, batch_size).
-        y:
-        y_mask:
-        graph: a SampleGraph object (to allow reuse if sampling repeatedly).
-
-    Returns:
-        A float.
-    """
+    
     if rk==None :
         rk = [1.]*x.shape[-1]
     feed_dict = {model.inputs.x: x, model.inputs.x_mask: x_mask, model.inputs.y: y, model.inputs.y_mask: y_mask, model.inputs.rk: rk}
@@ -85,20 +72,7 @@ def get_loss(session, model, x, x_mask, y, y_mask, rk=None, graph=None):
     return logits
 
 def get_losses(session, model, x, x_mask, y, y_mask, graph=None):
-    """get logits of output from a RNNModel with inputs.
 
-    Args:
-        session: TensorFlow session.
-        model: a RNNModel object.
-        x: Numpy array with shape (factors, max_seq_len, batch_size).
-        x_mask: Numpy array with shape (max_seq_len, batch_size).
-        y:
-        y_mask:
-        graph: a SampleGraph object (to allow reuse if sampling repeatedly).
-
-    Returns:
-        A float.
-    """
     feed_dict = {model.inputs.x: x, model.inputs.x_mask: x_mask, model.inputs.y: y, model.inputs.y_mask: y_mask}
     if graph is None:
         graph = LossesGraph(model)

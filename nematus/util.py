@@ -7,6 +7,7 @@ import exception
 import json
 import numpy
 import sys
+import math
 
 # Source:
 # https://stackoverflow.com/questions/38559755/how-to-get-current-available-gpus-in-tensorflow
@@ -168,7 +169,7 @@ def read_all_lines(config, sentences, batch_size):
 
     return batches, idxs
 
-def squeeze(listt):
+def squeeze(listt): # [[1,2],[3,4],[5,6]] => [1,2,3,4,5,6]
     result = []
     for i in listt:
         for j in i :
@@ -235,3 +236,11 @@ def update_std(old_std=0, old_m=0, old_n=0,new_val=0):
 
 def update_num(n=0, add=1):
     return n+add
+
+def softmax(l):
+    el = [math.exp(i) for i in l]
+    Z = sum(el)
+    return [i/Z for i in el]
+
+def split_list(l,s):
+    return [l[i:i+s] for i in range(0,len(l),s)]

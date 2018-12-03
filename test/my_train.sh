@@ -13,33 +13,24 @@ modelDir=/home/lyy/myDualLearning/models
 LMDir=/home/lyy/myDualLearning/LM
 
 python2 -u ../nematus/nmt.py \
-  --dual \
-  --joint \
   --model ${modelDir}/${L1}2${L2}/model.${L1}2${L2}.npz \
-  --model_rev ${modelDir}/${L2}2${L1}_tmp/model.${L2}2${L1}.npz \
-  --lms ${LMDir}/${L1}.zip ${LMDir}/${L2}.zip\
   --datasets ${SdataPath}/corpus.bpe.${L1} ${SdataPath}/corpus.bpe.${L2} \
-  --datasets_mono ${LdataPath}/corpus.bpe.${L1} ${LdataPath}/corpus.bpe.${L2} \
-  --dictionaries ${SdataPath}/corpus.bpe.${L1}.json ${SdataPath}/corpus.bpe.${L2}.json \
+  --dictionaries ${LdataPath}/corpus.bpe.${L1}.json ${LdataPath}/corpus.bpe.${L2}.json \
   --dim_word 256 \
   --dim 512 \
   --maxlen 100 \
   --optimizer adam \
   --lrate 0.0001 \
-  --batch_size 6 \
-  --beam_size 8 \
+  --batch_size 100 \
   --no_shuffle \
-  --dispFreq 1000 \
-  --sampleFreq 1000 \
-  --beamFreq 1000 \
-  --saveFreq 5000 \
-  --max_epochs 50 \
-  --reload latest_checkpoint \
-  --no_reload_training_progress \
+  --dispFreq 5000 \
+  --sampleFreq 5000 \
+  --beamFreq 10000 \
+  --saveFreq 20000 \
+  --max_epochs 500 \
   --n_words_src 60000 \
   --n_words 60000 \
 
-  #--para \
-  #--reinforce \
-  #--alpha 0.2 \
-  #--valid_datasets $dataPath1/newsdev2016.bpe.${L1} $dataPath1/newsdev2016.bpe.${L2} \
+  # --reload latest_checkpoint \
+  # --no_reload_training_progress \
+  # --valid_datasets $dataPath1/newsdev2016.bpe.${L1} $dataPath1/newsdev2016.bpe.${L2} \

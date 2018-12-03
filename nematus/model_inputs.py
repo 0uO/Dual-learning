@@ -1,5 +1,4 @@
 import tensorflow as tf
-import util
 
 class ModelInputs(object):
     def __init__(self, config):
@@ -31,12 +30,7 @@ class ModelInputs(object):
             name='training',
             shape=())
 
-        num_gpus = len(util.get_available_gpus())
-        num_replicas = max(1, num_gpus)
-        self.rk_num = config.batch_size/num_replicas
-        if config.dual:
-            self.rk_num = config.batch_size*config.beam_size/num_replicas
-        self.rk = tf.placeholder_with_default(
-            [1.]*self.rk_num,
+        self.rk = tf.placeholder(
             name = 'rk',
-            shape = (self.rk_num))
+            shape = (batch_size),
+            dtype = tf.float32)
