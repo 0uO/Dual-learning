@@ -1,7 +1,7 @@
 # Dual-learning for machine translation
 -------
 
-An implementation of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179) on tensorflow.
+An implementation of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179) and [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1803.00353) on tensorflow.
 
 INSTALLATION
 ------------
@@ -45,8 +45,10 @@ Description as their name. And you could write your own training script, see the
 | parameter | description |
 |---        |---          |
 | --dual | active dual learning |
-| --reinforce | active reinforcement learning |
 | --para | active parallel dataset using in dual learning |
+| --reinforce | active reinforcement learning |
+| --alpha|weight of lm score in dual learning. |
+| --joint | active joint training |
 | --model_rev or --saveto_rev | reverse model file name |
 | --source_lm | language model (source) |
 | --target_lm | language model (target) |
@@ -54,10 +56,24 @@ Description as their name. And you could write your own training script, see the
 | --source_dataset_mono | parallel training corpus (source) |
 | --target_dataset_mono | parallel training corpus (target) |
 | --datasets_mono | parallel training corpus (one for source, and one for target.) |
-| --dual |weight of lm score. |
-
-For replaying the paper, you need add  --reinforce , else it would be a normal back-translation method.
+For replaying the paper of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
+For replaying the paper [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
 
 #### TODO
 
-The result isn't good.
+The result of dual learning isn't good, while joint training works well, later I would plus the resule.
+
+#### History
+
+##### V1.0
+
+- basically replay the paper of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179).
+
+##### V1.1
+
+- bug fixed.
+
+##### V1.2
+
+- bug fixed and improve info displaying
+- basically replay the paper of [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179).
