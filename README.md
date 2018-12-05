@@ -51,6 +51,7 @@ Description as their name. And you could write your own training script, see the
 | --alpha|weight of lm score in dual learning. |
 | --joint | active joint training |
 | --model_rev or --saveto_rev | reverse model file name |
+| --reload_rev | load existing model from this path. Set to \"latest_checkpoint\" to reload the latest checkpoint in the same directory of --model |
 | --source_lm | language model (source) |
 | --target_lm | language model (target) |
 | --lms | language models (one for source, and one for target.) |
@@ -79,3 +80,7 @@ The result of dual learning isn't good, while joint training works well, later I
 
 - bug fixed and improve info displaying
 - basically replay the paper of [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179).
+
+##### V1.3
+
+- bug fixed.
