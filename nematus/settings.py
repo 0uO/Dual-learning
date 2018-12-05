@@ -85,7 +85,11 @@ class TranslationSettings(BaseSettings):
                 help="output file (default: standard output)")
 
         self._parser.add_argument(
-            '-k', '--beam_size', type=int, default=5, metavar='INT',
+            '-cpu',action="store_true",
+            help="use cpu")
+
+        self._parser.add_argument(
+            '-k', '--beam_size', type=int, default=8, metavar='INT',
             help="beam size (default: %(default)s)")
 
         self._parser.add_argument(

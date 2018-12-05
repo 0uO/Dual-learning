@@ -1,0 +1,568 @@
+nohup: ignoring input
+2018-12-02 23:41:25.302331: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2018-12-02 23:41:25.475981: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-12-02 23:41:25.476987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6575
+pciBusID: 0000:04:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-12-02 23:41:25.477025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-12-02 23:41:25.540017: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-12-02 23:41:25.540390: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+INFO: Building model...
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/en2de
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/de2en_tmp
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/de2en/model.de2en.npz-480000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-480000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-480000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Initial uidx for modelA =0
+INFO: Initial uidx for modelB =0
+INFO: Starting epoch 0
+INFO: para data has been used out at uidx0, now start using mono data. 
+INFO: [2018-12-03 00:51:30] Epoch: 0 Update: 1000 MODEL:A Loss/word: 0.484334654254 Words/sec: 319.387475716 Sents/sec: 1.43705107588
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -53.0840483979  std: 34.5871608922
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 90.5077358751  std: 68.7507498091
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.11459944551377013, 0.12395233917109813, 0.13280194023463548, 0.13437112355793127, 0.1178672329386065, 0.12357048853186796, 0.12755033032737412, 0.12528709972471652]
+INFO: SOURCE: President hence that once lose and Committee policy . 
+INFO: BEFORE: aber leisten bereits erinnern Öffentlichkeit was .      
+INFO: AFTER: Herr Präsident ! 
+INFO: -----------------------------------------------
+INFO: SOURCE: President hence that once lose and Committee policy . 
+INFO: BEFORE: noch leisten bereits erinnern Stellungnahme was .      
+INFO: AFTER: Herr Präsident ! 
+INFO: -----------------------------------------------
+INFO: SOURCE: President hence that once lose and Committee policy . 
+INFO: BEFORE: von dem leisten bereits erinnern Öffentlichkeit was .     
+INFO: AFTER: demzufolge war ich erneut Feststellungen im Gedächtnis . 
+INFO: -----------------------------------------------
+INFO: SOURCE: President hence that once lose and Committee policy . 
+INFO: BEFORE: von dem leisten bereits erinnern Stellungnahme was .     
+INFO: AFTER: Herr Präsident , wir sagen damit , mehr oder andere . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -53.0840483979  std: 34.5871608922
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 90.5077358751  std: 68.7507498091
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.11459944551377013, 0.12395233917109813, 0.13280194023463548, 0.13437112355793127, 0.1178672329386065, 0.12357048853186796, 0.12755033032737412, 0.12528709972471652]
+INFO: SOURCE: President hence that once lose and Committee policy . 
+INFO: BEFORE: aber leisten bereits erinnern Öffentlichkeit was .      
+INFO: AFTER 0: Herr Präsident , sie hat die Grundlage und parlamentarische Zusammenarbeit in Anspruch genommen .  Cost/Len/Avg 10.9541339874/99/0.110647818055
+INFO: AFTER 1: Herr Präsident , sie hat die Grundlage und parlamentarische Zusammenarbeit in Anspruch nehmen .  Cost/Len/Avg 9.4141960144/97/0.0970535671588
+INFO: AFTER 2: Herr Präsident , es wurde sich die Situation der Ausschüsse schuldig gemacht .  Cost/Len/Avg 9.39566516876/81/0.115995866281
+INFO: AFTER 3: Herr Präsident , sie hat die Grundlage und parlamentarische Zusammenarbeit erhalten .  Cost/Len/Avg 9.21405029297/87/0.105908624057
+INFO: AFTER 4: Herr Präsident , es wurde sich die Situation durch den Ausschuss zurückgezogen .  Cost/Len/Avg 8.54442596436/83/0.102944891137
+INFO: AFTER 5: eine letzte Bemerkung .  Cost/Len/Avg 3.66433024406/24/0.152680426836
+INFO: AFTER 6: Herr Präsident !  Cost/Len/Avg 1.8838737011/18/0.104659650061
+INFO: AFTER 7: Herr Präsident , sie hat die Grundlage und parlamentarische Zusammenarbeit in den Rat in Anspruch nehmen .  Cost/Len/Avg 14.5810527802/108/0.135009747964
+INFO: -----------------------------------------------
+INFO: [2018-12-03 00:51:30] Epoch: 0 Update: 1000 MODEL:B Loss/word: 0.405394683909 Words/sec: 331.475872591 Sents/sec: 1.44162566581
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.1333004466  std: 26.4977335646
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 105.824533979  std: 83.2568065367
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.11459944551377013, 0.12395233917109813, 0.13280194023463548, 0.13437112355793127, 0.1178672329386065, 0.12357048853186796, 0.12755033032737412, 0.12528709972471652]
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: these guarantee social cohesion throughout Europe .      
+INFO: AFTER: it will ensure the social cohesion of Europe . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: they guarantee social cohesion across Europe .      
+INFO: AFTER: this guarantee social cohesion across Europe . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this will guarantee social cohesion throughout Europe .     
+INFO: AFTER: it guarantees social cohesion across Europe . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this will guarantee social cohesion across Europe .     
+INFO: AFTER: they provide a guarantee for the social cohesion that Europe places . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.1333004466  std: 26.4977335646
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 105.824533979  std: 83.2568065367
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.11459944551377013, 0.12395233917109813, 0.13280194023463548, 0.13437112355793127, 0.1178672329386065, 0.12357048853186796, 0.12755033032737412, 0.12528709972471652]
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: these guarantee social cohesion throughout Europe .      
+INFO: AFTER 0: these guarantee social cohesion throughout Europe .  Cost/Len/Avg 4.16019487381/52/0.0800037475733
+INFO: AFTER 1: they guarantee social cohesion across Europe .  Cost/Len/Avg 4.03362941742/47/0.0858219024983
+INFO: AFTER 2: these guarantee social cohesion across Europe .  Cost/Len/Avg 3.40057063103/48/0.0708452214797
+INFO: AFTER 3: that guarantee social cohesion across Europe .  Cost/Len/Avg 3.05985164642/47/0.0651032265196
+INFO: AFTER 4: this guarantee social cohesion throughout Europe .  Cost/Len/Avg 2.76725029945/51/0.0542598097932
+INFO: AFTER 5: this guarantee social cohesion across Europe .  Cost/Len/Avg 2.07985377312/47/0.0442522079387
+INFO: AFTER 6: this will guarantee social cohesion across Europe .  Cost/Len/Avg 3.78680086136/52/0.0728230934877
+INFO: AFTER 7: this will guarantee social cohesion throughout Europe .  Cost/Len/Avg 3.89885449409/56/0.0696224016803
+INFO: -----------------------------------------------
+INFO: [2018-12-03 02:02:20] Epoch: 0 Update: 2000 MODEL:A Loss/word: 0.472280567789 Words/sec: 319.77062165 Sents/sec: 1.41169110196
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -54.3109837927  std: 35.6272064637
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 88.6973481005  std: 67.6126528467
+rk: [rk is pass. see nmt.py 621]
+sents_num: 96000
+P(X|Yt): [0.11649060513717134, 0.12475727511268953, 0.12736910759831516, 0.1270176780495397, 0.126514330817074, 0.1410083144301288, 0.1196889971385646, 0.11715369171651695]
+INFO: SOURCE: a taking being whether independent functioning .   
+INFO: BEFORE: ist hat so und festgestellt bei zu , ihn der den .    
+INFO: AFTER: ein Begleit@@ es auch gewährt zu hören . 
+INFO: -----------------------------------------------
+INFO: SOURCE: a taking being whether independent functioning .   
+INFO: BEFORE: ist hat so und festgestellt zu von auf@@ .       
+INFO: AFTER: man will ihnen ein Wander@@ mann geben ? 
+INFO: -----------------------------------------------
+INFO: SOURCE: a taking being whether independent functioning .   
+INFO: BEFORE: ist hat so und festgestellt zu , vor .       
+INFO: AFTER: ein Gewal@@ takt zieht Auskunft im Verein . 
+INFO: -----------------------------------------------
+INFO: SOURCE: a taking being whether independent functioning .   
+INFO: BEFORE: ist hat so und festgestellt zu von .        
+INFO: AFTER: eine Ge@@ fol@@ ter Freiwilligkeit hatte meiner Ansicht nach versagt . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -54.3109837927  std: 35.6272064637
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 88.6973481005  std: 67.6126528467
+rk: [rk is pass. see nmt.py 621]
+sents_num: 96000
+P(X|Yt): [0.11649060513717134, 0.12475727511268953, 0.12736910759831516, 0.1270176780495397, 0.126514330817074, 0.1410083144301288, 0.1196889971385646, 0.11715369171651695]
+INFO: SOURCE: a taking being whether independent functioning .   
+INFO: BEFORE: ist hat so und festgestellt bei zu , ihn der den .    
+INFO: AFTER 0: ein Zur@@ uf ist ein unabhängiges Funktionieren der Bevölkerung .  Cost/Len/Avg 8.57403945923/68/0.126088815577
+INFO: AFTER 1: es handelt sich dabei um eine unabhängige Arbeitsweise .  Cost/Len/Avg 7.0730471611/58/0.121949088985
+INFO: AFTER 2: es handelt sich dabei um eine unabhängige Funktionsweise .  Cost/Len/Avg 7.06028556824/60/0.117671426137
+INFO: AFTER 3: es handelt sich dabei um öffentliche Arbeit .  Cost/Len/Avg 6.1293182373/47/0.130411026326
+INFO: AFTER 4: es handelt sich dabei um unabhängig davon .  Cost/Len/Avg 6.1255903244/45/0.136124229431
+INFO: AFTER 5: es handelt sich dabei um unabhängige Funktionieren .  Cost/Len/Avg 5.82147312164/54/0.107805057808
+INFO: AFTER 6: es handelt sich dabei um öffentliche Aufgaben .  Cost/Len/Avg 4.99971675873/49/0.102035035892
+INFO: AFTER 7: ein Zur@@ uf ist ein unabhängiges Funktionieren der Europäischen Union unerlässlich .  Cost/Len/Avg 8.90320587158/89/0.100036021029
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/en2de/model.en2de.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/en2de/model.en2de.npz-2000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/en2de/model.en2de.npz-2000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 02:02:22] Epoch: 0 Update: 2000 MODEL:B Loss/word: 0.378680475918 Words/sec: 331.069991926 Sents/sec: 1.41122657799
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -44.6021044569  std: 25.9948022446
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 105.432170257  std: 82.8808931106
+rk: [rk is pass. see nmt.py 621]
+sents_num: 96000
+P(X|Yt): [0.11649060513717134, 0.12475727511268953, 0.12736910759831516, 0.1270176780495397, 0.126514330817074, 0.1410083144301288, 0.1196889971385646, 0.11715369171651695]
+INFO: SOURCE: ich will mich daran gerne anschließen .   
+INFO: BEFORE: I would like to join you in the context of that .    
+INFO: AFTER: I will not fully agree with that . 
+INFO: -----------------------------------------------
+INFO: SOURCE: ich will mich daran gerne anschließen .   
+INFO: BEFORE: I would like to join in this direction .       
+INFO: AFTER: that is something I would like to welcome . 
+INFO: -----------------------------------------------
+INFO: SOURCE: ich will mich daran gerne anschließen .   
+INFO: BEFORE: I would like to join in the report .       
+INFO: AFTER: I will not agree on that . 
+INFO: -----------------------------------------------
+INFO: SOURCE: ich will mich daran gerne anschließen .   
+INFO: BEFORE: I would like to join in this .        
+INFO: AFTER: I will go back to this . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -44.6021044569  std: 25.9948022446
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 105.432170257  std: 82.8808931106
+rk: [rk is pass. see nmt.py 621]
+sents_num: 96000
+P(X|Yt): [0.11649060513717134, 0.12475727511268953, 0.12736910759831516, 0.1270176780495397, 0.126514330817074, 0.1410083144301288, 0.1196889971385646, 0.11715369171651695]
+INFO: SOURCE: ich will mich daran gerne anschließen .   
+INFO: BEFORE: I would like to join you in the context of that .    
+INFO: AFTER 0: I would like to join in this direction .  Cost/Len/Avg 7.36350679398/41/0.179597726682
+INFO: AFTER 1: I would like to join in the report .  Cost/Len/Avg 6.70844173431/37/0.181309236063
+INFO: AFTER 2: I would like to join in this .  Cost/Len/Avg 6.09744977951/31/0.196691928371
+INFO: AFTER 3: I would like to join with you .  Cost/Len/Avg 6.0346455574/32/0.188582673669
+INFO: AFTER 4: I would like to add my congratulations .  Cost/Len/Avg 5.99475669861/41/0.146213578015
+INFO: AFTER 5: I would like to join with that .  Cost/Len/Avg 5.67430400848/33/0.171948606318
+INFO: AFTER 6: I will gladly go back .  Cost/Len/Avg 5.22527742386/24/0.217719892661
+INFO: AFTER 7: I would like to join you in the context of that .  Cost/Len/Avg 9.91635608673/50/0.198327121735
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-2000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-2000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 03:13:01] Epoch: 0 Update: 3000 MODEL:A Loss/word: 0.461671026766 Words/sec: 322.22155932 Sents/sec: 1.41488246395
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -55.2659995243  std: 36.3672968616
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 87.5237073194  std: 67.0872643467
+rk: [rk is pass. see nmt.py 621]
+sents_num: 144000
+P(X|Yt): [0.12489020308935928, 0.1330104970971928, 0.12560103506217032, 0.1222942763405917, 0.12231693612637372, 0.11514192498753358, 0.11742013083786891, 0.13932499645890958]
+INFO: SOURCE: President easing peacefully constructive UNK reaffirmed has nour@@ veness . 
+INFO: BEFORE: aber Vergleiche Vorbereitung des es , Pol@@ der 1 müssen sollte ich Ziel der Status .                                                                                                                                                                                          
+INFO: AFTER: die Bekämpfung verb@@ ere Aufrufe war Nach@@ wirkungen auf die Hälfte der Fähigkeit zu schaffen . diese At@@ te könnten eine Form der Zusammenarbeit , aber auch Untätigkeit und Iran hatte fehlende Investitions@@ formen eingeführt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: President easing peacefully constructive UNK reaffirmed has nour@@ veness . 
+INFO: BEFORE: aber Anlaß alem eln Betrag des Tony Mobilität verschiedenen und , meine Rede .                                                                                                                                                                                            
+INFO: AFTER: spürbare noch engere konstruktive Konsultationen haben ihn zu Lasten zu verzeichnen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: President easing peacefully constructive UNK reaffirmed has nour@@ veness . 
+INFO: BEFORE: aber Vergleiche Vorbereitung des es , Pol@@ der 1 müssen sein den .                                                                                                                                                                                             
+INFO: AFTER: die Intensivierung der sozialen und wiederholt bekräftigte gestartet hat eine Unter@@ wanderung , die darüber hinausgeht . 
+INFO: -----------------------------------------------
+INFO: SOURCE: President easing peacefully constructive UNK reaffirmed has nour@@ veness . 
+INFO: BEFORE: aber Vergleiche Vorbereitung des es , Pol@@ der 1 müssen .                                                                                                                                                                                               
+INFO: AFTER: jeden Versuch der Diplomatie , das wieder einen Nährboden fand ; 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -55.2659995243  std: 36.3672968616
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 87.5237073194  std: 67.0872643467
+rk: [rk is pass. see nmt.py 621]
+sents_num: 144000
+P(X|Yt): [0.12489020308935928, 0.1330104970971928, 0.12560103506217032, 0.1222942763405917, 0.12231693612637372, 0.11514192498753358, 0.11742013083786891, 0.13932499645890958]
+INFO: SOURCE: President easing peacefully constructive UNK reaffirmed has nour@@ veness . 
+INFO: BEFORE: aber Vergleiche Vorbereitung des es , Pol@@ der 1 müssen sollte ich Ziel der Status .                                                                                                                                                                                          
+INFO: AFTER 0: die Intensivierung der bilateralen Kontakte , die in der Folge lag , hat sie unter der Abwertung .  Cost/Len/Avg 17.8645877838/99/0.180450381655
+INFO: AFTER 1: die Intensivierung der bilateralen Kontakte , die in der Folge lag , hat sie unter der Voraussetzung .  Cost/Len/Avg 17.5244369507/103/0.17014016457
+INFO: AFTER 2: die Intensivierung der diplomatischen Konsultationen , der zu verdanken ist , hat eine Öffnung des Arbeitsplatzes hervorgerufen .  Cost/Len/Avg 16.7564506531/131/0.127911837046
+INFO: AFTER 3: die Intensivierung der diplomatischen Konsultationen , der zu verdanken ist , hat sich un@@ erwiesen .  Cost/Len/Avg 13.3086919785/103/0.129210601733
+INFO: AFTER 4: die Intensivierung der bilateralen Kontakte , die sie wirksam bieten ?  Cost/Len/Avg 11.2008161545/71/0.157757974007
+INFO: AFTER 5: die Intensivierung der bilateralen Kontakte , die sie wirksam erreichen ?  Cost/Len/Avg 10.2271308899/74/0.138204471485
+INFO: AFTER 6: die Intensivierung der bilateralen Kontakte , die in der Folge lag , hat sie unter der Abwertung und dem Markt zu haben .  Cost/Len/Avg 21.307062149/122/0.174648050402
+INFO: AFTER 7: die Intensivierung der bilateralen Kontakte , die in der Folge lag , hat sie unter der Abwertung und dem Markt zu pflegen .  Cost/Len/Avg 21.553560257/124/0.17381903433
+INFO: -----------------------------------------------
+INFO: [2018-12-03 03:13:01] Epoch: 0 Update: 3000 MODEL:B Loss/word: 0.372143343198 Words/sec: 330.665506925 Sents/sec: 1.41550399078
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -44.2989425122  std: 25.9485404063
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 104.691286445  std: 82.6883537704
+rk: [rk is pass. see nmt.py 621]
+sents_num: 144000
+P(X|Yt): [0.12489020308935928, 0.1330104970971928, 0.12560103506217032, 0.1222942763405917, 0.12231693612637372, 0.11514192498753358, 0.11742013083786891, 0.13932499645890958]
+INFO: SOURCE: diese El@@ end@@ s@@ statistik ließe sich endlos weiterführen . 
+INFO: BEFORE: these orange substances are on the verge of nothing more than a means of delay .                                                                                                                                                                                          
+INFO: AFTER: these jails , which dates back to length . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese El@@ end@@ s@@ statistik ließe sich endlos weiterführen . 
+INFO: BEFORE: these mar@@ tial chemical periods are stagn@@ ating back to the way date .                                                                                                                                                                                            
+INFO: AFTER: this m@@ oul@@ der of bombings for a period of time unforeseen assistance is regressive . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese El@@ end@@ s@@ statistik ließe sich endlos weiterführen . 
+INFO: BEFORE: these orange substances are on the verge of nothing more about that .                                                                                                                                                                                             
+INFO: AFTER: these mar@@ tial chemical periods are getting complete again . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese El@@ end@@ s@@ statistik ließe sich endlos weiterführen . 
+INFO: BEFORE: these orange substances are on the verge of nothing more .                                                                                                                                                                                               
+INFO: AFTER: these dged factors of gas increase were stagn@@ ated in the sky . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -44.2989425122  std: 25.9485404063
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 104.691286445  std: 82.6883537704
+rk: [rk is pass. see nmt.py 621]
+sents_num: 144000
+P(X|Yt): [0.12489020308935928, 0.1330104970971928, 0.12560103506217032, 0.1222942763405917, 0.12231693612637372, 0.11514192498753358, 0.11742013083786891, 0.13932499645890958]
+INFO: SOURCE: diese El@@ end@@ s@@ statistik ließe sich endlos weiterführen . 
+INFO: BEFORE: these orange substances are on the verge of nothing more than a means of delay .                                                                                                                                                                                          
+INFO: AFTER 0: these mar@@ tial chemical periods are stagn@@ ating back to the way date .  Cost/Len/Avg 16.8196563721/75/0.224262084961
+INFO: AFTER 1: these orange substances are on the verge of nothing more about that .  Cost/Len/Avg 14.8854532242/70/0.212649331774
+INFO: AFTER 2: these orange substances are on the verge of nothing more .  Cost/Len/Avg 13.0130929947/59/0.220560898215
+INFO: AFTER 3: these orange substances are on the way of disappearing .  Cost/Len/Avg 11.5006933212/57/0.201766549495
+INFO: AFTER 4: these orange substances are on the way of .  Cost/Len/Avg 11.2601566315/44/0.255912650715
+INFO: AFTER 5: these orange substances are on the verge of nothing .  Cost/Len/Avg 10.5689706802/54/0.195721679264
+INFO: AFTER 6: these stubbor@@ n@@ ness on these lapses .  Cost/Len/Avg 10.1848907471/43/0.23685792435
+INFO: AFTER 7: these orange substances are on the verge of nothing more than a means of delay .  Cost/Len/Avg 19.4218883514/81/0.2397763994
+INFO: -----------------------------------------------
+INFO: [2018-12-03 04:24:27] Epoch: 0 Update: 4000 MODEL:A Loss/word: 0.455298114608 Words/sec: 319.425095827 Sents/sec: 1.39977576057
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.3059088734  std: 37.4816770082
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 86.5664363771  std: 66.3935321151
+rk: [rk is pass. see nmt.py 621]
+sents_num: 192000
+P(X|Yt): [0.12559251626619683, 0.12480304788153596, 0.12473661145404792, 0.12474620779478034, 0.12476738425913772, 0.12488557797219083, 0.1256638864156831, 0.12480476795642728]
+INFO: SOURCE: . 
+INFO: BEFORE: Sie .               
+INFO: AFTER: ganz großes Dankeschön zurück . 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: selbst bei kann irischen .            
+INFO: AFTER: Herr Präsident , Herr Kommissar , verehrte Kollegen ! 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: selbst bei kann Länder .            
+INFO: AFTER: und 27 Meinung das Wort für einen Änderungsantrag vorzubringen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: selbst bei die unter Auffassung            
+INFO: AFTER: die Europäische Union hat eine eigene Grundlage für Inhaftierungen Bericht geleistet . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.3059088734  std: 37.4816770082
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 86.5664363771  std: 66.3935321151
+rk: [rk is pass. see nmt.py 621]
+sents_num: 192000
+P(X|Yt): [0.12559251626619683, 0.12480304788153596, 0.12473661145404792, 0.12474620779478034, 0.12476738425913772, 0.12488557797219083, 0.1256638864156831, 0.12480476795642728]
+INFO: SOURCE: . 
+INFO: BEFORE: Sie .               
+INFO: AFTER 0: Herr Präsident , Herr Kommissar , liebe Kollegen !  Cost/Len/Avg 5.9470448494/52/0.114366247104
+INFO: AFTER 1: Herr Präsident , Herr Kommissar Lamy !  Cost/Len/Avg 4.65066623688/40/0.116266655922
+INFO: AFTER 2: Frau Präsidentin .  Cost/Len/Avg 4.26559686661/20/0.21327984333
+INFO: AFTER 3: Herr Präsident , Kolleginnen und Kollegen !  Cost/Len/Avg 4.26386213303/45/0.094752491845
+INFO: AFTER 4: Frau Kommissarin !  Cost/Len/Avg 4.20464086533/19/0.221296887649
+INFO: AFTER 5: Herr Präsident , Herr Kommissar !  Cost/Len/Avg 4.07733535767/35/0.116495295933
+INFO: AFTER 6: Herr Präsident , liebe Kolleginnen und Kollegen !  Cost/Len/Avg 2.41869831085/51/0.0474254570755
+INFO: AFTER 7: Herr Präsident , Herr Kommissar , liebe Kolleginnen und Kollegen !  Cost/Len/Avg 4.68311834335/68/0.0688693874023
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/en2de/model.en2de.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/en2de/model.en2de.npz-4000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/en2de/model.en2de.npz-4000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 04:24:29] Epoch: 0 Update: 4000 MODEL:B Loss/word: 0.360274596865 Words/sec: 330.5919098 Sents/sec: 1.39920843524
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.8786978201  std: 25.7760017427
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 103.989216294  std: 81.8648003545
+rk: [rk is pass. see nmt.py 621]
+sents_num: 192000
+P(X|Yt): [0.12559251626619683, 0.12480304788153596, 0.12473661145404792, 0.12474620779478034, 0.12476738425913772, 0.12488557797219083, 0.1256638864156831, 0.12480476795642728]
+INFO: SOURCE: . 
+INFO: BEFORE: so .               
+INFO: AFTER: . 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: thank you very briefly .            
+INFO: AFTER: . 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: thank you very much .            
+INFO: AFTER: thank you very much ! 
+INFO: -----------------------------------------------
+INFO: SOURCE: . 
+INFO: BEFORE: thank you , Commissioner !            
+INFO: AFTER: . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.8786978201  std: 25.7760017427
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 103.989216294  std: 81.8648003545
+rk: [rk is pass. see nmt.py 621]
+sents_num: 192000
+P(X|Yt): [0.12559251626619683, 0.12480304788153596, 0.12473661145404792, 0.12474620779478034, 0.12476738425913772, 0.12488557797219083, 0.1256638864156831, 0.12480476795642728]
+INFO: SOURCE: . 
+INFO: BEFORE: so .               
+INFO: AFTER 0: so .  Cost/Len/Avg 4.69649839401/5/0.939299678802
+INFO: AFTER 1: thank you very briefly .  Cost/Len/Avg 4.04356002808/25/0.161742401123
+INFO: AFTER 2: thank you very much .  Cost/Len/Avg 3.8853969574/22/0.176608952609
+INFO: AFTER 3: thank you , Commissioner !  Cost/Len/Avg 3.79941153526/27/0.14071894575
+INFO: AFTER 4: thank you .  Cost/Len/Avg 3.77380299568/12/0.314483582973
+INFO: AFTER 5: yes .  Cost/Len/Avg 3.75607705116/6/0.62601284186
+INFO: AFTER 6: .  Cost/Len/Avg 0.903225421906/2/0.451612710953
+INFO: AFTER 7: thank you very much , Mr President @-@ in @-@ Office of the Council ,  Cost/Len/Avg 11.0269241333/70/0.157527487619
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-4000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-4000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 05:43:37] Epoch: 0 Update: 5000 MODEL:A Loss/word: 0.443778675363 Words/sec: 281.570119546 Sents/sec: 1.26330342037
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.6815997626  std: 38.1897551449
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 85.1968165864  std: 65.2850991152
+rk: [rk is pass. see nmt.py 621]
+sents_num: 240000
+P(X|Yt): [0.11643197454850938, 0.17293452874066587, 0.10903057988063662, 0.11532967893276419, 0.1087263551873082, 0.12457801098501939, 0.125005819303464, 0.12796305242163222]
+INFO: SOURCE: we wrong igration UNK I for that provisions six prices .  
+INFO: BEFORE: zu denn die , Fraktion Gemeinschafts@@ Verbraucher wir Größe für , Abschluss wirklich .   
+INFO: AFTER: wir sind unvereinbar mit der An@@ ten@@ istenz aus dem mir aufgestellten Absatz 4 Absatz . was Bürgerbeauftragte hier interessantes Kapitals sollte , stimmt das . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we wrong igration UNK I for that provisions six prices .  
+INFO: BEFORE: , viele der Gemeinschafts@@ wir gewaltige eines , Fraktion Menschen viele .     
+INFO: AFTER: ein anderes Unter@@ pf@@ and von möglichen Regeln erwarten wir bei diesen festgelegten Regeln B . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we wrong igration UNK I for that provisions six prices .  
+INFO: BEFORE: zu denn die , Fraktion Gemeinschafts@@ viele wir Niveau für , Abschluss wirklich .   
+INFO: AFTER: es verstößt gewisse In@@ flexibilität bei dieser Verordnung , bei denen ich Absatz 6 für die Aufnahme bestimmter Verbrauchsteuern für drittens interessieren . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we wrong igration UNK I for that provisions six prices .  
+INFO: BEFORE: zu denn die , Fraktion Gemeinschafts@@ Verbraucher wir Größe für , Abschluss tern .   
+INFO: AFTER: ein anderes Land ist gegenüber dem von Ihnen genannten Vertrag vorzusehen . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.6815997626  std: 38.1897551449
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 85.1968165864  std: 65.2850991152
+rk: [rk is pass. see nmt.py 621]
+sents_num: 240000
+P(X|Yt): [0.11643197454850938, 0.17293452874066587, 0.10903057988063662, 0.11532967893276419, 0.1087263551873082, 0.12457801098501939, 0.125005819303464, 0.12796305242163222]
+INFO: SOURCE: we wrong igration UNK I for that provisions six prices .  
+INFO: BEFORE: zu denn die , Fraktion Gemeinschafts@@ Verbraucher wir Größe für , Abschluss wirklich .   
+INFO: AFTER 0: wir kommen nicht aus , dass wir uns bei den sechs Preis@@ preisen zusammen@@ halten .  Cost/Len/Avg 14.0144090652/86/0.162958244945
+INFO: AFTER 1: wir kommen nicht aus , dass wir uns bei den sechs Preis@@ preisen stellen .  Cost/Len/Avg 13.5847854614/76/0.178747177124
+INFO: AFTER 2: es verstößt , weil wir uns im Hinblick auf diese sechs Preis@@ senken hätten .  Cost/Len/Avg 13.5447149277/82/0.165179450337
+INFO: AFTER 3: es verstößt , weil wir uns bei den sechs zusätzlichen Preisen nicht so weit auseinander setzen .  Cost/Len/Avg 13.468298912/100/0.13468298912
+INFO: AFTER 4: es verstößt , weil wir uns im Hinblick auf diese sechs Preise geeinigt hatten .  Cost/Len/Avg 12.7675981522/82/0.15570241649
+INFO: AFTER 5: es verstößt , weil wir uns bei diesen sechs Preis@@ preisen einverstanden erklären .  Cost/Len/Avg 11.578420639/88/0.131572961807
+INFO: AFTER 6: es verstößt , weil wir uns im Hinblick auf diese sechs Preise geeinigt haben .  Cost/Len/Avg 11.0240697861/81/0.136099626989
+INFO: AFTER 7: es verstößt , weil wir uns bei den sechs zusätzlichen Preisen nicht so weit genug beteiligt haben .  Cost/Len/Avg 13.5194530487/103/0.131256825716
+INFO: -----------------------------------------------
+INFO: [2018-12-03 05:43:37] Epoch: 0 Update: 5000 MODEL:B Loss/word: 0.35392067851 Words/sec: 289.016973915 Sents/sec: 1.2637605114
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.3072820239  std: 25.3183198859
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 102.587792767  std: 80.5785439161
+rk: [rk is pass. see nmt.py 621]
+sents_num: 240000
+P(X|Yt): [0.11643197454850938, 0.17293452874066587, 0.10903057988063662, 0.11532967893276419, 0.1087263551873082, 0.12457801098501939, 0.125005819303464, 0.12796305242163222]
+INFO: SOURCE: das gleiche Ausgab@@ enniveau ist für den Haushalt 2004 vorgesehen .  
+INFO: BEFORE: in fact , the same spending competition is earmarked for the 2004 budget .   
+INFO: AFTER: the market is a debate on that policy for 2004 . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das gleiche Ausgab@@ enniveau ist für den Haushalt 2004 vorgesehen .  
+INFO: BEFORE: the level of spending is transposed into the same market level .     
+INFO: AFTER: account must also be put into service levels . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das gleiche Ausgab@@ enniveau ist für den Haushalt 2004 vorgesehen .  
+INFO: BEFORE: in fact , the same spending level is planned for the 2004 budget .   
+INFO: AFTER: disregard the same spending decision , the Budget for 2004 . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das gleiche Ausgab@@ enniveau ist für den Haushalt 2004 vorgesehen .  
+INFO: BEFORE: in fact , the same spending competition is earmarked for the 2004 Budget .   
+INFO: AFTER: the level of security is planned in general for the 2004 budget . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.3072820239  std: 25.3183198859
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 102.587792767  std: 80.5785439161
+rk: [rk is pass. see nmt.py 621]
+sents_num: 240000
+P(X|Yt): [0.11643197454850938, 0.17293452874066587, 0.10903057988063662, 0.11532967893276419, 0.1087263551873082, 0.12457801098501939, 0.125005819303464, 0.12796305242163222]
+INFO: SOURCE: das gleiche Ausgab@@ enniveau ist für den Haushalt 2004 vorgesehen .  
+INFO: BEFORE: in fact , the same spending competition is earmarked for the 2004 budget .   
+INFO: AFTER 0: in fact , the same spending competition is earmarked for the 2004 budget .  Cost/Len/Avg 11.5072164536/75/0.153429552714
+INFO: AFTER 1: the level of spending is transposed into the same market level .  Cost/Len/Avg 11.3723335266/65/0.174958977332
+INFO: AFTER 2: in fact , the same spending level is planned for the 2004 budget .  Cost/Len/Avg 11.1209192276/67/0.165983869069
+INFO: AFTER 3: in fact , the same spending competition is earmarked for the 2004 Budget .  Cost/Len/Avg 10.970117569/75/0.146268234253
+INFO: AFTER 4: in fact , the same spending level is planned for the 2004 Budget .  Cost/Len/Avg 10.2220392227/67/0.152567749593
+INFO: AFTER 5: in fact , the same objective of funding is planned for the 2004 Budget .  Cost/Len/Avg 10.4918966293/73/0.143724611361
+INFO: AFTER 6: in fact , the same objective of funding is planned for the 2004 budget .  Cost/Len/Avg 10.9184684753/73/0.149568061306
+INFO: AFTER 7: in fact , the same objective of funding is envisaged for the 2004 budget .  Cost/Len/Avg 11.769241333/75/0.156923217773
+INFO: -----------------------------------------------
+INFO: [2018-12-03 07:02:54] Epoch: 0 Update: 6000 MODEL:A Loss/word: 0.42290332405 Words/sec: 287.343433938 Sents/sec: 1.26127396163
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.9256925198  std: 38.5281920572
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 83.9189000664  std: 64.5912013927
+rk: [rk is pass. see nmt.py 621]
+sents_num: 288000
+P(X|Yt): [0.12488286539408108, 0.12448040606697638, 0.1310072200772501, 0.11206385271417493, 0.13501210620709791, 0.11572485784927927, 0.131022373189851, 0.12580631850128937]
+INFO: SOURCE: we centre I @-@ tax tax .    
+INFO: BEFORE: den die Rat die wir ich Protokolls % zudem der den .      
+INFO: AFTER: wir drängen einen auf Steuern gezahlten Reformen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we centre I @-@ tax tax .    
+INFO: BEFORE: den die Rat die wir ich Protokolls % zudem .        
+INFO: AFTER: wir tragen geradezu Schau@@ steuern . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we centre I @-@ tax tax .    
+INFO: BEFORE: den die Rat die wir ich bestehen seinen .         
+INFO: AFTER: wir bo@@ p@@ to Österreicher in diesem Bereich hatten hier mit großer Bedeutung . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we centre I @-@ tax tax .    
+INFO: BEFORE: den die % die wir ich Protokolls % bestehen .        
+INFO: AFTER: wir bekennen uns in der Irak @-@ Krise . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -56.9256925198  std: 38.5281920572
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 83.9189000664  std: 64.5912013927
+rk: [rk is pass. see nmt.py 621]
+sents_num: 288000
+P(X|Yt): [0.12488286539408108, 0.12448040606697638, 0.1310072200772501, 0.11206385271417493, 0.13501210620709791, 0.11572485784927927, 0.131022373189851, 0.12580631850128937]
+INFO: SOURCE: we centre I @-@ tax tax .    
+INFO: BEFORE: den die Rat die wir ich Protokolls % zudem der den .      
+INFO: AFTER 0: wir leben in der Mitte .  Cost/Len/Avg 6.60833692551/25/0.26433347702
+INFO: AFTER 1: wir stehen in der Europäischen Union .  Cost/Len/Avg 6.14572906494/40/0.153643226624
+INFO: AFTER 2: wir stehen in der Grund@@ steuer .  Cost/Len/Avg 5.84531927109/35/0.167009122031
+INFO: AFTER 3: wir leben in einer Harmonisierung .  Cost/Len/Avg 5.81279420853/36/0.161466505792
+INFO: AFTER 4: wir stehen in der internationalen Steuer .  Cost/Len/Avg 5.2630815506/43/0.122397245363
+INFO: AFTER 5: wir treten für eine Steuer .  Cost/Len/Avg 5.05816459656/30/0.168605486552
+INFO: AFTER 6: wir leben in der Mitte der Steuern .  Cost/Len/Avg 6.8494720459/37/0.185120866105
+INFO: AFTER 7: wir leben in der Mitte der Steuerpolitik .  Cost/Len/Avg 7.20896530151/43/0.167650355849
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/en2de/model.en2de.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/en2de/model.en2de.npz-6000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/en2de/model.en2de.npz-6000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 07:02:55] Epoch: 0 Update: 6000 MODEL:B Loss/word: 0.335048487639 Words/sec: 297.221654413 Sents/sec: 1.26086699252
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.1172560322  std: 25.3706648892
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 101.207209998  std: 79.7672584554
+rk: [rk is pass. see nmt.py 621]
+sents_num: 288000
+P(X|Yt): [0.12488286539408108, 0.12448040606697638, 0.1310072200772501, 0.11206385271417493, 0.13501210620709791, 0.11572485784927927, 0.131022373189851, 0.12580631850128937]
+INFO: SOURCE: das wiederum ist ein wenig wenig .    
+INFO: BEFORE: that , however , is a bit too short of that .      
+INFO: AFTER: this again seems slightly less . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das wiederum ist ein wenig wenig .    
+INFO: BEFORE: that , however , is a bit too short .        
+INFO: AFTER: that , however , is somewhat ambiguous . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das wiederum ist ein wenig wenig .    
+INFO: BEFORE: that , however , is a little less .         
+INFO: AFTER: that again is little rather arriving at all . 
+INFO: -----------------------------------------------
+INFO: SOURCE: das wiederum ist ein wenig wenig .    
+INFO: BEFORE: that , too , is a bit too little .        
+INFO: AFTER: this is only a slightly less legal basis . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -43.1172560322  std: 25.3706648892
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 101.207209998  std: 79.7672584554
+rk: [rk is pass. see nmt.py 621]
+sents_num: 288000
+P(X|Yt): [0.12488286539408108, 0.12448040606697638, 0.1310072200772501, 0.11206385271417493, 0.13501210620709791, 0.11572485784927927, 0.131022373189851, 0.12580631850128937]
+INFO: SOURCE: das wiederum ist ein wenig wenig .    
+INFO: BEFORE: that , however , is a bit too short of that .      
+INFO: AFTER 0: that , however , is a bit too short .  Cost/Len/Avg 9.33964252472/38/0.24578006644
+INFO: AFTER 1: that , however , is a little less .  Cost/Len/Avg 8.98509120941/36/0.249585866928
+INFO: AFTER 2: that , too , is a bit too little .  Cost/Len/Avg 8.89139938354/35/0.254039982387
+INFO: AFTER 3: that , however , is a bit too easy .  Cost/Len/Avg 8.63621139526/37/0.233411118791
+INFO: AFTER 4: that again is a bit too little .  Cost/Len/Avg 6.77070188522/33/0.205172784401
+INFO: AFTER 5: that , however , is very little .  Cost/Len/Avg 6.33837795258/34/0.186422880958
+INFO: AFTER 6: that again is very little .  Cost/Len/Avg 5.11734247208/28/0.182762231146
+INFO: AFTER 7: that , however , is a bit too short of that .  Cost/Len/Avg 11.5295000076/46/0.250641304514
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-6000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-6000 is not in all_model_checkpoint_paths. Manually adding it.
+./test_train_dual.sh: line 41: 11346 Killed                  python2 -u ../nematus/nmt.py --dual --joint --model ${modelDir}/${L1}2${L2}/model.${L1}2${L2}.npz --model_rev ${modelDir}/${L2}2${L1}_tmp/model.${L2}2${L1}.npz --lms ${LMDir}/${L1}.zip ${LMDir}/${L2}.zip --datasets ${SdataPath}/corpus.bpe.${L1} ${SdataPath}/corpus.bpe.${L2} --datasets_mono ${LdataPath}/corpus.bpe.${L1} ${LdataPath}/corpus.bpe.${L2} --dictionaries ${SdataPath}/corpus.bpe.${L1}.json ${SdataPath}/corpus.bpe.${L2}.json --dim_word 256 --dim 512 --maxlen 100 --optimizer adam --lrate 0.0001 --batch_size 6 --beam_size 8 --no_shuffle --dispFreq 1000 --sampleFreq 1000 --beamFreq 1000 --saveFreq 2000 --max_epochs 50 --reload latest_checkpoint --no_reload_training_progress --n_words_src 60000 --n_words 60000

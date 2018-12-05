@@ -253,11 +253,12 @@ def train(config, sess):
                     progress.history_errs.append(valid_loss)
                     progress.bad_counter = 0
                     saver.save(sess, save_path=config.saveto)
-                    progress_path = '{0}.progress.json'.format(config.saveto)
+                    progress_path = '{0}.progress.valid.json'.format(config.saveto)
                     progress.save_to_json(progress_path)
                 else:
                     progress.history_errs.append(valid_loss)
                     progress.bad_counter += 1
+                    logging.info("bad_counter is added to {}.".format(progress.bad_counter))
                     if progress.bad_counter > config.patience:
                         logging.info('Early Stop!')
                         progress.estop = True
@@ -273,7 +274,7 @@ def train(config, sess):
                     if need_to_save:
                         save_path = config.saveto + ".best-valid-script"
                         saver.save(sess, save_path=save_path)
-                        progress_path = '{}.progress.json'.format(save_path)
+                        progress_path = '{}.progress.script_valid.json'.format(save_path)
                         progress.save_to_json(progress_path)
 
             if config.saveFreq and progress.uidx % config.saveFreq == 0:
@@ -576,7 +577,7 @@ def train_dual(configs):
                 with graph[ano(model)].as_default():
                     if configs['dual']['joint']:
                         # bt_scores: [S1,S2,S3...Sbeam]*batch
-                        # count pro for each beam
+                        # count pro for each batch
                         rk_ano = util.squeeze([util.softmax(lst) for lst in util.split_list(bt_scores,beam_size)])
 
                         # count pro in all
@@ -612,14 +613,13 @@ def train_dual(configs):
 
                 progress[model].uidx += 1
 
-            # PRINT SOME INFO
-            for model in models:
+                # PRINT SOME INFO
                 if configs[model].dispFreq and progress[model].uidx % configs[model].dispFreq == 0:
                     duration = time.time() - last_time[model]
                     disp_time = datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
                     logging.info('{0} Epoch: {1} Update: {2} MODEL:{3} Loss/word: {4} Words/sec: {5} Sents/sec: {6}'\
-                        .format(disp_time, progress[ano(model)].eidx, progress[ano(model)].uidx, \
-                            model, total_loss[ano(model)]/n_words[ano(model)], n_words[ano(model)]/duration, n_sents[ano(model)]/duration))
+                        .format(disp_time, progress[model].eidx, progress[model].uidx, \
+                            model, total_loss[model]/n_words[model], n_words[model]/duration, n_sents[model]/duration))
                     last_time[model] = time.time()
                     total_loss[model] = 0.
                     n_sents[model] = 0
@@ -642,7 +642,7 @@ def train_dual(configs):
                         sample = util.seq2words(ss, num_to_target[model])
                         logging.info('SOURCE: {}'.format(source))
                         logging.info('BEFORE: {}'.format(target))
-                        logging.info('AFTER: {}'.format(sample))
+                        logging.info('SAMPLE: {}'.format(sample))
                         logging.info('-----------------------------------------------')
 
                 if configs[model].beamFreq and progress[model].uidx % configs[model].beamFreq == 0:
@@ -663,7 +663,7 @@ def train_dual(configs):
                         logging.info('BEFORE: {}'.format(target))
                         for i, (sample_seq, cost) in enumerate(ss):
                             sample = util.seq2words(sample_seq, num_to_target[model])
-                            msg = 'AFTER {}: {} Cost/Len/Avg {}/{}/{}'.format(
+                            msg = 'BEAM {}: {} Cost/Len/Avg {}/{}/{}'.format(
                                 i, sample, cost, len(sample), cost/len(sample))
                             logging.info(msg)
                         logging.info('-----------------------------------------------')
@@ -679,11 +679,12 @@ def train_dual(configs):
                         progress[model].bad_counter = 0
                         with graph[model].as_default():
                             saver.save(sess[model], save_path=configs[model].saveto)
-                        progress_path = '{0}.progress.json'.format(configs[model].saveto)
+                        progress_path = '{0}.progress.valid.json'.format(configs[model].saveto)
                         progress.save_to_json(progress_path)
                     else:
                         progress[model].history_errs.append(valid_loss)
                         progress[model].bad_counter += 1
+                        logging.info("bad_counter is added to {}.".format(progress[model].bad_counter))
                         if progress[model].bad_counter > configs[model].patience:
                             logging.info('Early Stop!')
                             progress[model].estop = True
@@ -701,7 +702,7 @@ def train_dual(configs):
                             save_path = configs[model].saveto + ".best-valid-script"
                             with graph[model].as_default():
                                 saver[model].save(sess[model], save_path=save_path)
-                            progress_path = '{}.progress.json'.format(save_path)
+                            progress_path = '{}.progress.script_valid.json'.format(save_path)
                             progress[model].save_to_json(progress_path)
 
                 if configs[model].saveFreq and progress[model].uidx % configs[model].saveFreq == 0:
@@ -782,7 +783,7 @@ def calc_loss_per_sentence(config, sess, text_iterator, model,
             loss_per_sentence /= adjusted_lengths
 
         losses += list(loss_per_sentence)
-        logging.info( "Seen {0}".format(len(losses)))
+        # logging.info( "Seen {0}".format(len(losses)))
     return losses
 
 
@@ -937,7 +938,7 @@ def parse_args():
                          help="validation frequency (default: %(default)s)")
     validation.add_argument('--valid_script', type=str, default=None, metavar='PATH',
                          help="path to script for external validation (default: %(default)s). The script will be passed an argument specifying the path of a file that contains translations of the source validation corpus. It must write a single score to standard output.")
-    validation.add_argument('--patience', type=int, default=10, metavar='INT',
+    validation.add_argument('--patience', type=int, default=40, metavar='INT',
                          help="early stopping patience (default: %(default)s)")
 
     display = parser.add_argument_group('display parameters')
@@ -969,6 +970,8 @@ def parse_args():
                          help="active joint learning")
     dual.add_argument('--model_rev', '--saveto_rev', type=str, default='model_rev', metavar='PATH', dest='saveto_rev',
                          help="reverse model file name (default: %(default)s)")
+    data.add_argument('--reload_rev', type=str, default=None, metavar='PATH',
+                         help="load existing model from this path. Set to \"latest_checkpoint\" to reload the latest checkpoint in the same directory of --model")
     dual.add_argument('--source_lm', type=str, metavar='PATH', 
                          help="language model (source)")
     dual.add_argument('--target_lm', type=str, metavar='PATH', 
@@ -1077,7 +1080,6 @@ def parse_args():
     # check parameters for dual learning
     if config.dual:
         assert config.factors == 1, 'In dual learning, factor must be 1.'
-        assert config.reload == 'latest_checkpoint'
         config_rev = copy.deepcopy(config)
         configs['dual'] = {'lm':{},'dataset':{}}
 
@@ -1127,16 +1129,28 @@ def parse_args():
         else:
             config_rev.source_dataset = config.target_dataset
             config_rev.target_dataset = config.source_dataset
-            config_rev.saveto = config.saveto_rev
-            config_rev.saveto_rev = config.saveto
+            if config.datasets:
+                config_rev.datasets[0],config_rev.datasets[1]=config_rev.datasets[1],config_rev.datasets[0]
+
+            config_rev.saveto, config_rev.saveto_rev = config.saveto_rev, config.saveto
+            config_rev.reload, config_rev.reload_rev = config.reload_rev, config.reload
+
             config_rev.valid_source_dataset = config.valid_target_dataset
             config_rev.valid_target_dataset = config.valid_source_dataset
+            if config.valid_datasets:
+                config_rev.valid_datasets[0],config_rev.valid_datasets[1]=config_rev.valid_datasets[1],config_rev.valid_datasets[0]
+
             config_rev.source_dicts = [config.target_dict]
             config_rev.source_vocab_sizes = [config.target_vocab_size]
             config_rev.target_dict = config.source_dicts[0]
             config_rev.target_vocab_size = config.source_vocab_sizes[0]
+            if config.dictionaries:
+                config_rev.dictionaries[0],config_rev.dictionaries[1]=config_rev.dictionaries[1],config_rev.dictionaries[0]
+
             config_rev.source_dataset_mono = config.target_dataset_mono
             config_rev.target_dataset_mono = config.source_dataset_mono
+            if config.datasets_mono:
+                config_rev.datasets_mono[0],config_rev.datasets_mono[1] = config_rev.datasets_mono[1],config_rev.datasets_mono[0] 
 
         configs['dual']['alpha'] = config.alpha
         configs['dual']['para'] = False

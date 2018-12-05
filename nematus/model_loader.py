@@ -55,6 +55,7 @@ def init_or_restore_variables(config, sess, ensemble_scope=None, train=False):
             logging.info('Latest checkpoint found in directory ' + os.path.abspath(checkpoint_dir))
     elif config.reload != None:
         reload_filename = config.reload
+        logging.info("reload_filename: {}".format(reload_filename))
     if (reload_filename == None) and (config.prior_model != None):
         logging.info('Initializing model parameters from prior')
         reload_filename = config.prior_model

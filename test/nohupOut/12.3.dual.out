@@ -1,0 +1,304 @@
+nohup: ignoring input
+2018-12-03 08:18:00.052845: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2018-12-03 08:18:00.238116: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-12-03 08:18:00.238753: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6575
+pciBusID: 0000:04:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-12-03 08:18:00.238787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-12-03 08:18:00.314280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+2018-12-03 08:18:00.314680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+INFO: Building model...
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/en2de_tmp
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/en2de/model.en2de.npz-540000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+creating class map
+loading pickle file
+setting model type
+loading model file
+INFO: Latest checkpoint found in directory /home/lyy/myDualLearning/models/de2en_tmp
+INFO: Loading model parameters from file /home/lyy/myDualLearning/models/de2en/model.de2en.npz-620000
+INFO:tensorflow:Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-620000
+INFO: Restoring parameters from /home/lyy/myDualLearning/models/de2en/model.de2en.npz-620000
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Reading data...
+INFO: no validation set loaded
+INFO: Done
+INFO: Initial uidx for modelA =0
+INFO: Initial uidx for modelB =0
+INFO: Starting epoch 0
+INFO: para data has been used out at uidx0, now start using mono data. 
+INFO: [2018-12-03 08:53:01] Epoch: 0 Update: 500 MODEL:A Loss/word: 0.5289746493 Words/sec: 322.299303914 Sents/sec: 1.44514550224
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -54.19966446  std: 34.3521113255
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 102.774572712  std: 76.312390484
+rk: [rk is pass. see nmt.py 621]
+sents_num: 24000
+P(X|Yt): [0.12190527706023586, 0.12870135395972265, 0.12692413510404713, 0.13155237846749618, 0.1257059536172203, 0.12321422025003984, 0.11645125129017254, 0.1255454302510655]
+INFO: SOURCE: we want to reuse raw materials in future . 
+INFO: BEFORE: hier wollen wir in Zukunft das Recycling weiter kürzen .    
+INFO: SAMPLE: wir sollten für diese Produktion dann schon in Zukunft das Wasser verringern . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we want to reuse raw materials in future . 
+INFO: BEFORE: hier wollen wir in Zukunft das Recycling .      
+INFO: SAMPLE: wir sollten schnell diese Emissionen abbauen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we want to reuse raw materials in future . 
+INFO: BEFORE: wir wollen das Rauchen in Zukunft abschaffen .      
+INFO: SAMPLE: wir sollten die Energiegewinnung in Zukunft kürzen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: we want to reuse raw materials in future . 
+INFO: BEFORE: hier wollen wir in Zukunft Wasser .       
+INFO: SAMPLE: das Recycling von Rohstoffen . hier geht es also nicht . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -54.19966446  std: 34.3521113255
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 102.774572712  std: 76.312390484
+rk: [rk is pass. see nmt.py 621]
+sents_num: 24000
+P(X|Yt): [0.12190527706023586, 0.12870135395972265, 0.12692413510404713, 0.13155237846749618, 0.1257059536172203, 0.12321422025003984, 0.11645125129017254, 0.1255454302510655]
+INFO: SOURCE: we want to reuse raw materials in future . 
+INFO: BEFORE: hier wollen wir in Zukunft das Recycling weiter kürzen .    
+INFO: BEAM 0: hier wollen wir in Zukunft das Recycling .  Cost/Len/Avg 6.53376865387/43/0.15194810823
+INFO: BEAM 1: wir wollen das Rauchen in Zukunft abschaffen .  Cost/Len/Avg 6.38645410538/47/0.135882002242
+INFO: BEAM 2: hier wollen wir in Zukunft Wasser .  Cost/Len/Avg 6.01203632355/36/0.167001008987
+INFO: BEAM 3: wir wollen das Rauchen in Zukunft kürzen .  Cost/Len/Avg 5.72072029114/44/0.130016370253
+INFO: BEAM 4: hier wollen wir in Zukunft Abfallvermeidung .  Cost/Len/Avg 5.66599845886/46/0.12317387954
+INFO: BEAM 5: hier wollen wir in Zukunft das Recycling reduzieren .  Cost/Len/Avg 5.29311752319/54/0.098020694874
+INFO: BEAM 6: das Recycling von Rohstoffen .  Cost/Len/Avg 3.84056377411/31/0.123889154004
+INFO: BEAM 7: hier wollen wir in Zukunft das Recycling weiter kürzen .  Cost/Len/Avg 6.58411931992/58/0.113519298619
+INFO: -----------------------------------------------
+INFO: [2018-12-03 08:53:03] Epoch: 0 Update: 500 MODEL:B Loss/word: 0.461268000777 Words/sec: 334.424489457 Sents/sec: 1.45746674507
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -46.7311558806  std: 27.244156764
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 115.672987846  std: 87.3998957437
+rk: [rk is pass. see nmt.py 621]
+sents_num: 24000
+P(X|Yt): [0.12475402867167751, 0.1235793579156331, 0.11845755553530422, 0.11501050949001178, 0.11962684168064357, 0.14317347876904196, 0.1201116994312258, 0.135286528506462]
+INFO: SOURCE: wir wollen Rohstoffe in Zukunft wieder@@ verwenden .  
+INFO: BEFORE: we do not want to re@@ deploy raw materials in the long term .   
+INFO: SAMPLE: we do not wish to re@@ focus producers in future . 
+INFO: -----------------------------------------------
+INFO: SOURCE: wir wollen Rohstoffe in Zukunft wieder@@ verwenden .  
+INFO: BEFORE: we do not want to re@@ produce raw materials in the future .    
+INFO: SAMPLE: we do not want to re @-@ embrace future raw materials in a way that is continually populated that scientists move from liberalisation . we do not want to market them in particular . 
+INFO: -----------------------------------------------
+INFO: SOURCE: wir wollen Rohstoffe in Zukunft wieder@@ verwenden .  
+INFO: BEFORE: we do not want to re@@ deploy raw materials in the future .    
+INFO: SAMPLE: we do not want to re@@ put to fruition . 
+INFO: -----------------------------------------------
+INFO: SOURCE: wir wollen Rohstoffe in Zukunft wieder@@ verwenden .  
+INFO: BEFORE: we do not want to re@@ produce raw materials in future .     
+INFO: SAMPLE: we do not want raw materials to regulate to retain proper structural costs . we also start colleagues from moving towards market control on the market . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -46.7311558806  std: 27.244156764
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 115.672987846  std: 87.3998957437
+rk: [rk is pass. see nmt.py 621]
+sents_num: 24000
+P(X|Yt): [0.12475402867167751, 0.1235793579156331, 0.11845755553530422, 0.11501050949001178, 0.11962684168064357, 0.14317347876904196, 0.1201116994312258, 0.135286528506462]
+INFO: SOURCE: wir wollen Rohstoffe in Zukunft wieder@@ verwenden .  
+INFO: BEFORE: we do not want to re@@ deploy raw materials in the long term .   
+INFO: BEAM 0: we do not want to re@@ produce raw materials in the future .  Cost/Len/Avg 5.28424739838/61/0.0866270065308
+INFO: BEAM 1: we do not want to re@@ deploy raw materials in the future .  Cost/Len/Avg 4.86632156372/60/0.0811053593953
+INFO: BEAM 2: we do not want to re@@ produce raw materials in future .  Cost/Len/Avg 4.47859382629/57/0.0785718215139
+INFO: BEAM 3: we do not want to re@@ deploy raw materials in future .  Cost/Len/Avg 3.90843510628/56/0.0697934840407
+INFO: BEAM 4: we do not want raw materials in the future .  Cost/Len/Avg 3.90410661697/45/0.0867579248216
+INFO: BEAM 5: we want to restore raw materials in future .  Cost/Len/Avg 3.70734000206/45/0.0823853333791
+INFO: BEAM 6: we do not want raw materials in future .  Cost/Len/Avg 3.08579230309/41/0.0752632269045
+INFO: BEAM 7: we do not want to re@@ deploy raw materials in the long term .  Cost/Len/Avg 5.50858068466/63/0.0874377886454
+INFO: -----------------------------------------------
+INFO: [2018-12-03 09:26:08] Epoch: 0 Update: 1000 MODEL:A Loss/word: 0.496825083234 Words/sec: 334.898489039 Sents/sec: 1.50982127182
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -52.8888732213  std: 33.9190817573
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 99.1676832655  std: 74.6910403594
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.14134631606475986, 0.12428011518526708, 0.13611824260332844, 0.11898612504849423, 0.13963942166520762, 0.10899336188453947, 0.11665301099873879, 0.11398340654966449]
+INFO: SOURCE: this guarantees social cohesion across Europe .   
+INFO: BEFORE: diese Sicherung sozialer Kohäsion ist in jedem Fall ein .          
+INFO: SAMPLE: bedeutet dies den kommerziellen Zusammenhalt der Länder . 
+INFO: -----------------------------------------------
+INFO: SOURCE: this guarantees social cohesion across Europe .   
+INFO: BEFORE: diese Sicherung sozialer Kohäsion ist in Europa sehr wichtig .          
+INFO: SAMPLE: das gewährleistet kein Sozialschutz . 
+INFO: -----------------------------------------------
+INFO: SOURCE: this guarantees social cohesion across Europe .   
+INFO: BEFORE: diese Sicherung sozialer Kohäsion ist gewährleistet .             
+INFO: SAMPLE: diese Kohäsion besteht damit zum sozialen Zusammenhalt . 
+INFO: -----------------------------------------------
+INFO: SOURCE: this guarantees social cohesion across Europe .   
+INFO: BEFORE: sie garantiert sozialen Zusammenhalt in Europa .             
+INFO: SAMPLE: diese Kohäsion bildet damit der sozialen Kohäsion umsonst in den Verhandlungen mit aller Welt . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -52.8888732213  std: 33.9190817573
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 99.1676832655  std: 74.6910403594
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.14134631606475986, 0.12428011518526708, 0.13611824260332844, 0.11898612504849423, 0.13963942166520762, 0.10899336188453947, 0.11665301099873879, 0.11398340654966449]
+INFO: SOURCE: this guarantees social cohesion across Europe .   
+INFO: BEFORE: diese Sicherung sozialer Kohäsion ist in jedem Fall ein .          
+INFO: BEAM 0: diese Sicherung sozialer Kohäsion ist in jedem Fall ein .  Cost/Len/Avg 7.79316616058/59/0.132087562044
+INFO: BEAM 1: diese Sicherung sozialer Kohäsion ist in Europa sehr wichtig .  Cost/Len/Avg 6.52313995361/64/0.101924061775
+INFO: BEAM 2: diese Sicherung sozialer Kohäsion ist gewährleistet .  Cost/Len/Avg 5.26401185989/56/0.0940002117838
+INFO: BEAM 3: sie garantiert sozialen Zusammenhalt in Europa .  Cost/Len/Avg 4.88243770599/49/0.0996415858366
+INFO: BEAM 4: diese Sicherung sozialer Kohäsion kann erreicht werden .  Cost/Len/Avg 4.7131652832/58/0.0812614704001
+INFO: BEAM 5: dies gewährleistet die soziale Kohäsion in Europa .  Cost/Len/Avg 4.40792894363/54/0.081628313771
+INFO: BEAM 6: sie garantiert einen sozialen Zusammenhalt in Europa .  Cost/Len/Avg 4.23655700684/55/0.0770283092152
+INFO: BEAM 7: dies gewährleistet die soziale Kohäsion in Europa , in die das Wohlergehen aller Grenzen andererseits gewährt werden .  Cost/Len/Avg 19.7997608185/122/0.162293121463
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/en2de_tmp/model.en2de.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/en2de_tmp/model.en2de.npz-1000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/en2de_tmp/model.en2de.npz-1000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 09:26:11] Epoch: 0 Update: 1000 MODEL:B Loss/word: 0.424701793534 Words/sec: 347.618650387 Sents/sec: 1.50870911768
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.6422378949  std: 28.903661395
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 111.974988571  std: 85.8083786676
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.12572903641173033, 0.13634438267549445, 0.1268889078617941, 0.12010219261920034, 0.1287569755035503, 0.1287589045127666, 0.11380672350962605, 0.11961287690583769]
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this guarantee social cohesion in Europe .          
+INFO: SAMPLE: this will guarantee social cohesion in the European Union . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this guarantees social cohesion .            
+INFO: SAMPLE: this guarantee plays social cohesion throughout Europe and society that will solve the majority of these funds . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this will guarantee social cohesion throughout Europe .         
+INFO: SAMPLE: that guarantee social cohesion throughout Europe . 
+INFO: -----------------------------------------------
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this guarantees social cohesion throughout Europe .          
+INFO: SAMPLE: these guarantees the social cohesion of Europe . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.6422378949  std: 28.903661395
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 111.974988571  std: 85.8083786676
+rk: [rk is pass. see nmt.py 621]
+sents_num: 48000
+P(X|Yt): [0.12572903641173033, 0.13634438267549445, 0.1268889078617941, 0.12010219261920034, 0.1287569755035503, 0.1287589045127666, 0.11380672350962605, 0.11961287690583769]
+INFO: SOURCE: diese garantieren den sozialen Zusammenhalt in ganz Europa . 
+INFO: BEFORE: this guarantee social cohesion in Europe .          
+INFO: BEAM 0: this guarantee social cohesion in Europe .  Cost/Len/Avg 4.48143148422/43/0.104219336842
+INFO: BEAM 1: this guarantees social cohesion .  Cost/Len/Avg 4.31315374374/34/0.126857463051
+INFO: BEAM 2: this guarantees social cohesion throughout Europe .  Cost/Len/Avg 4.04233264923/52/0.0777371663314
+INFO: BEAM 3: that guarantee social cohesion .  Cost/Len/Avg 3.58583283424/33/0.108661601038
+INFO: BEAM 4: this guarantee social cohesion throughout Europe .  Cost/Len/Avg 3.35365223885/51/0.0657578870362
+INFO: BEAM 5: that guarantee social cohesion throughout Europe .  Cost/Len/Avg 3.0303413868/51/0.0594184585646
+INFO: BEAM 6: these guarantees the social cohesion of Europe .  Cost/Len/Avg 4.04148626328/49/0.0824793114954
+INFO: BEAM 7: this will guarantee social cohesion throughout Europe .  Cost/Len/Avg 4.25573921204/56/0.0759953430721
+INFO: -----------------------------------------------
+INFO: saving now ...save to /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz
+INFO:tensorflow:/home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-1000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: /home/lyy/myDualLearning/models/de2en_tmp/model.de2en.npz-1000 is not in all_model_checkpoint_paths. Manually adding it.
+INFO: [2018-12-03 10:09:53] Epoch: 0 Update: 1500 MODEL:A Loss/word: 0.51299280125 Words/sec: 257.416567209 Sents/sec: 1.14293577598
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -53.4456726774  std: 34.7080837173
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 98.2036775161  std: 73.5841006478
+rk: [rk is pass. see nmt.py 621]
+sents_num: 72000
+P(X|Yt): [0.13197127402430167, 0.12232058164346979, 0.13324089739497422, 0.1274523181830742, 0.11315018843945317, 0.12173473756488483, 0.1254667781957066, 0.12466322455413557]
+INFO: SOURCE: nevertheless , we should not exaggerate this either . 
+INFO: BEFORE: aber wir sollten dies auch nicht noch einmal mehr tun .   
+INFO: SAMPLE: dazu sollte man sie auch ebenso wenig Bedeutung haben . 
+INFO: -----------------------------------------------
+INFO: SOURCE: nevertheless , we should not exaggerate this either . 
+INFO: BEFORE: dennoch sollten wir das Ganze nicht noch vergessen .     
+INFO: SAMPLE: allerdings sollte dies auch positive Auswirkungen sein . 
+INFO: -----------------------------------------------
+INFO: SOURCE: nevertheless , we should not exaggerate this either . 
+INFO: BEFORE: wir sollten dies auch nicht noch einmal vergessen .     
+INFO: SAMPLE: allerdings sollte man dies ebenso wenig nutzen . 
+INFO: -----------------------------------------------
+INFO: SOURCE: nevertheless , we should not exaggerate this either . 
+INFO: BEFORE: allerdings sollten wir das Ganze nicht noch vergessen .     
+INFO: SAMPLE: allerdings sollte uns das kein Grund dafür sein , nicht nach dem . 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -53.4456726774  std: 34.7080837173
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 98.2036775161  std: 73.5841006478
+rk: [rk is pass. see nmt.py 621]
+sents_num: 72000
+P(X|Yt): [0.13197127402430167, 0.12232058164346979, 0.13324089739497422, 0.1274523181830742, 0.11315018843945317, 0.12173473756488483, 0.1254667781957066, 0.12466322455413557]
+INFO: SOURCE: nevertheless , we should not exaggerate this either . 
+INFO: BEFORE: aber wir sollten dies auch nicht noch einmal mehr tun .   
+INFO: BEAM 0: aber wir sollten dies auch nicht noch einmal mehr tun .  Cost/Len/Avg 6.71010112762/56/0.119823234422
+INFO: BEAM 1: dennoch sollten wir das Ganze nicht noch vergessen .  Cost/Len/Avg 6.28680706024/53/0.118619001137
+INFO: BEAM 2: wir sollten dies auch nicht noch einmal vergessen .  Cost/Len/Avg 6.28505325317/52/0.120866408715
+INFO: BEAM 3: allerdings sollten wir das Ganze nicht noch vergessen .  Cost/Len/Avg 5.75822353363/56/0.102825420243
+INFO: BEAM 4: aber wir sollten dies auch nicht über@@ bewerten .  Cost/Len/Avg 5.45323991776/52/0.104869998418
+INFO: BEAM 5: aber wir sollten dies auch nicht unterschätzen .  Cost/Len/Avg 4.94836521149/50/0.0989673042297
+INFO: BEAM 6: aber wir sollten dies auch nicht vergessen .  Cost/Len/Avg 4.26117706299/45/0.094692823622
+INFO: BEAM 7: allerdings sollten wir das Ganze nicht noch vergessen , und nicht .  Cost/Len/Avg 9.00949478149/68/0.132492570316
+INFO: -----------------------------------------------
+INFO: [2018-12-03 10:09:54] Epoch: 0 Update: 1500 MODEL:B Loss/word: 0.420194767098 Words/sec: 268.729156469 Sents/sec: 1.14356725535
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.0183659982  std: 27.820884524
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 112.538409882  std: 85.8951602624
+rk: [rk is pass. see nmt.py 621]
+sents_num: 72000
+P(X|Yt): [0.12047746701392084, 0.11421911623452963, 0.11965253895500114, 0.12486941495015247, 0.14939430418112887, 0.10484457381377164, 0.13088949396069355, 0.13565309089080194]
+INFO: SOURCE: man soll diesen Aspekt jedoch auch nicht übertreiben . 
+INFO: BEFORE: let this , however , are not over @-@ depth .   
+INFO: SAMPLE: just for this part of the information network I would make it that we took a research resolution . 
+INFO: -----------------------------------------------
+INFO: SOURCE: man soll diesen Aspekt jedoch auch nicht übertreiben . 
+INFO: BEFORE: we should not elaborate on this .       
+INFO: SAMPLE: but you are one of those as being clearer to have seen research measures . 
+INFO: -----------------------------------------------
+INFO: SOURCE: man soll diesen Aspekt jedoch auch nicht übertreiben . 
+INFO: BEFORE: we should not ignore that .        
+INFO: SAMPLE: let this , too , are not upset . 
+INFO: -----------------------------------------------
+INFO: SOURCE: man soll diesen Aspekt jedoch auch nicht übertreiben . 
+INFO: BEFORE: we should not ignore this .        
+INFO: SAMPLE: let that sense that there is a significant stand ? 
+INFO: -----------------------------------------------
+INFO: lm_scores: [lm_scores is pass. see nmt.py 621]
+mean: -45.0183659982  std: 27.820884524
+bt_scores: [bt_scores is pass. see nmt.py 621]
+mean: 112.538409882  std: 85.8951602624
+rk: [rk is pass. see nmt.py 621]
+sents_num: 72000
+P(X|Yt): [0.12047746701392084, 0.11421911623452963, 0.11965253895500114, 0.12486941495015247, 0.14939430418112887, 0.10484457381377164, 0.13088949396069355, 0.13565309089080194]
+INFO: SOURCE: man soll diesen Aspekt jedoch auch nicht übertreiben . 
+INFO: BEFORE: let this , however , are not over @-@ depth .   
+INFO: BEAM 0: let this , however , are not over @-@ depth .  Cost/Len/Avg 7.29808998108/46/0.158654130023
+INFO: BEAM 1: we should not elaborate on this .  Cost/Len/Avg 5.49959182739/34/0.161752700806
+INFO: BEAM 2: we should not ignore that .  Cost/Len/Avg 5.40695762634/28/0.193105629512
+INFO: BEAM 3: we should not ignore this .  Cost/Len/Avg 5.38616132736/28/0.192362904549
+INFO: BEAM 4: I do not see that .  Cost/Len/Avg 5.16515350342/20/0.258257675171
+INFO: BEAM 5: we should not exaggerate this .  Cost/Len/Avg 5.13873815536/32/0.160585567355
+INFO: BEAM 6: let this , however , are not over @-@ f@@ out .  Cost/Len/Avg 8.99400424957/48/0.187375088533
+INFO: BEAM 7: let this , however , are not over our leisure time .  Cost/Len/Avg 8.99873638153/53/0.169787478897
+INFO: -----------------------------------------------
+./test_train_dual.sh: line 41: 18073 Killed                  python2 -u ../nematus/nmt.py --dual --joint --model ${modelDir}/${L1}2${L2}_tmp/model.${L1}2${L2}.npz --model_rev ${modelDir}/${L2}2${L1}_tmp/model.${L2}2${L1}.npz --lms ${LMDir}/${L1}.zip ${LMDir}/${L2}.zip --datasets ${SdataPath}/corpus.bpe.${L1} ${SdataPath}/corpus.bpe.${L2} --datasets_mono ${LdataPath}/corpus.bpe.${L1} ${LdataPath}/corpus.bpe.${L2} --dictionaries ${SdataPath}/corpus.bpe.${L1}.json ${SdataPath}/corpus.bpe.${L2}.json --dim_word 256 --dim 512 --maxlen 100 --optimizer adam --lrate 0.0001 --batch_size 6 --beam_size 8 --no_shuffle --dispFreq 500 --sampleFreq 500 --beamFreq 500 --saveFreq 1000 --max_epochs 50 --reload latest_checkpoint --no_reload_training_progress --n_words_src 60000 --n_words 60000

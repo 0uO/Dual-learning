@@ -13,6 +13,7 @@ import model_loader
 import rnn_model
 from settings import TranslationSettings
 import util
+import os
 
 
 def main(settings):
@@ -25,7 +26,13 @@ def main(settings):
     logging.basicConfig(level=level, format='%(levelname)s: %(message)s')
 
     # Create the TensorFlow session.
-    tf_config = tf.ConfigProto()
+    if settings.cpu:
+        logging.info("using cpu now...")
+        os.environ["CUDA_VISIBLE_DEVICES"] = ""
+        tf_config = tf.ConfigProto(device_count={'GPU': 0})
+    else:
+	os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+        tf_config = tf.ConfigProto()
     tf_config.allow_soft_placement = True
     session = tf.Session(config=tf_config)
 
@@ -38,7 +45,7 @@ def main(settings):
         configs.append(argparse.Namespace(**config))
 
     # Create the model graphs and restore their variables.
-    logging.debug("Loading models\n")
+    logging.debug("Loading models")
     models = []
     for i, config in enumerate(configs):
         with tf.variable_scope("model%d" % i) as scope:
@@ -47,6 +54,7 @@ def main(settings):
                                                            ensemble_scope=scope)
             models.append(model)
 
+    logging.debug("Models load done.")
     # Translate the source file.
     inference.translate_file(input_file=settings.input,
                              output_file=settings.output,

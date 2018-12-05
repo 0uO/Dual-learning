@@ -9,14 +9,17 @@ SdataPath=/data2/Europarl_1x2/small
 
 L1=en
 L2=de
-modelDir=/home/lyy/myDualLearning/models
+# modelDir=/home/lyy/myDualLearning/models
+modelDir=/data2/models/model_Lyy
+modelDirSuffix=
 LMDir=/home/lyy/myDualLearning/LM
 
 python2 -u ../nematus/nmt.py \
   --dual \
   --joint \
-  --model ${modelDir}/${L1}2${L2}/model.${L1}2${L2}.npz \
-  --model_rev ${modelDir}/${L2}2${L1}_tmp/model.${L2}2${L1}.npz \
+  --para \
+  --model ${modelDir}/${L1}2${L2}${modelDirSuffix}/model.${L1}2${L2}.npz \
+  --model_rev ${modelDir}/${L2}2${L1}${modelDirSuffix}/model.${L2}2${L1}.npz \
   --lms ${LMDir}/${L1}.zip ${LMDir}/${L2}.zip\
   --datasets ${SdataPath}/corpus.bpe.${L1} ${SdataPath}/corpus.bpe.${L2} \
   --datasets_mono ${LdataPath}/corpus.bpe.${L1} ${LdataPath}/corpus.bpe.${L2} \
@@ -29,17 +32,19 @@ python2 -u ../nematus/nmt.py \
   --batch_size 6 \
   --beam_size 8 \
   --no_shuffle \
-  --dispFreq 1000 \
-  --sampleFreq 1000 \
-  --beamFreq 1000 \
-  --saveFreq 5000 \
+  --dispFreq 500 \
+  --sampleFreq 100000 \
+  --beamFreq 500 \
+  --saveFreq 500 \
   --max_epochs 50 \
-  --reload latest_checkpoint \
   --no_reload_training_progress \
   --n_words_src 60000 \
   --n_words 60000 \
+  --reload ${modelDir}/${L1}2${L2}${modelDirSuffix}/model.${L1}2${L2}.npz-160000 \
+  --reload_rev ${modelDir}/${L2}2${L1}${modelDirSuffix}/model.${L2}2${L1}.npz-80000 
 
-  #--para \
+  # --reload latest_checkpoint \
+  # --reload_rev latest_checkpoint \
   #--reinforce \
   #--alpha 0.2 \
   #--valid_datasets $dataPath1/newsdev2016.bpe.${L1} $dataPath1/newsdev2016.bpe.${L2} \

@@ -135,6 +135,8 @@ def translate_file(input_file, output_file, session, models, configs,
     _, _, _, num_to_target = util.load_dictionaries(configs[0])
     model_set = InferenceModelSet(models, configs)
 
+    logging.debug("InferenceModelSet set done.")
+
     logging.info("NOTE: Length of translations is capped to {}".format(
         configs[0].translation_maxlen))
 

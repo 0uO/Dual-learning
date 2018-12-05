@@ -84,8 +84,12 @@ def load_config(basename):
             with open('%s.pkl' % basename, 'rb') as f:
                 return pkl.load(f)
         except:
-            sys.stderr.write('Error: config file {0}.json is missing\n'.format(basename))
-            sys.exit(1)
+            try:
+                with open('%s.json' % basename.split('-')[0], 'rb') as f:
+                    return json.load(f)
+            except:
+                sys.stderr.write('Error: config file {0}.json is missing\n'.format(basename))
+                sys.exit(1)
 
 
 def seq2words(seq, inverse_dictionary, join=True):
