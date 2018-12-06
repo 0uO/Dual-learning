@@ -5,7 +5,7 @@ An implementation of [Dual Learning For Machine Translation](https://arxiv.org/a
 
 INSTALLATION
 ------------
-This project is heavily depend on [nematus v0.3. ]( https://github.com/EdinburghNLP/nematus )
+This project depend heavily on [nematus v0.3. ]( https://github.com/EdinburghNLP/nematus )
 
 Nematus requires the following packages:
 
@@ -18,7 +18,7 @@ And I use kenlm as language model:
 
 - Kenlm ( pip install [https://github.com/kpu/kenlm/archive/master.zip](https://github.com/kpu/kenlm/archive/master.zip) )
 
-It seems you need complie it from source code for getting binary executing file. See more details about kenlm in above link.
+It seems you need complie it from source code for getting binary executing file. See more details about kenlm in the link above.
 
 The code inside which related to language model are independent, so you could use other language model as long as it could offer the function of ***score a sentence*** . 
  
@@ -78,7 +78,7 @@ The result of dual learning isn't good, while joint training works well, later I
 
 ##### V1.2
 
-- bug fixed and improve info displaying
+- bug fixed and improve the info displaying.
 - basically replay the paper of [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179).
 
 ##### V1.3
