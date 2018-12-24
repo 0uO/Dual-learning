@@ -40,6 +40,9 @@ def create_language_model(config,choice):
     lm_factory = lm.lm_factory(model_file_name)
     return lm_factory
 
+def score_sents(lm,sents): # sents: [ 'I am a boy .', 'another sentence .', '...', ... ]
+    return lm.score(sents)
+
 def score_a_sent(lm,sent):
     return lm.score([sent])[0]
 
@@ -401,77 +404,7 @@ def train_dual(configs):
             para_text_iterator[model].reset()
         end_of_iter = False
 
-        # TRAIN COMMONLY WITH PARALLEL DATA
-        if (configs['dual']['para']):
-            logging.info('using para data now...')
-            while True:
-                for model in models:
-                    para_source_sents[model],para_target_sents[model] = [],[]
-                    for num in range(beam_size):
-                        try:
-                            ss,tt = para_text_iterator[model].next()
-                            for per_ss,per_tt in zip(ss,tt):
-                                 para_source_sents[model].append(per_ss)
-                                 para_target_sents[model].append(per_tt)
-                        except StopIteration:
-                            end_of_iter = True
-                            break
-                if end_of_iter:
-                    break
-                for model in models:
-                    if len(para_source_sents[model][0][0]) != configs[model].factors:
-                        logging.error('Mismatch between number of factors in settings ({0}), and number in training corpus ({1})\n'.format(config.factors, len(source_sents[0][0])))
-                        sys.exit(1)
-                    x_in, x_mask_in, y_in, y_mask_in = util.prepare_data(
-                            para_source_sents[model], para_target_sents[model], configs[model].factors, maxlen=None)
-                    if x_in is None:
-                        logging.info('Minibatch with zero sample under length {0}'.format(configs[model].maxlen))
-                        continue
-                    write_summary_for_this_batch = configs[model].summaryFreq and ((progress[model].uidx % configs[model].summaryFreq == 0) or (configs[model].finish_after and progress[model].uidx % configs[model].finish_after == 0))
-                    (factors, seqLen, batch_size) = x_in.shape
-
-                    with graph[model].as_default():
-                        loss = updater[model].update(sess[model],x_in,x_mask_in,y_in,y_mask_in,write_summary_for_this_batch)
-                    total_loss[model] += loss
-                    n_sents[model] += batch_size
-                    n_words[model] += int(numpy.sum(y_mask_in))
-                    progress[model].uidx += 1
-
-                    if configs[model].dispFreq and progress[model].uidx % configs[model].dispFreq == 0:
-                        duration = time.time() - last_time[model]
-                        disp_time = datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
-                        logging.info('{0} Epoch: {1} Update: {2} MODEL: {3} Loss/word: {4} Words/sec: {5} Sents/sec: {6}'\
-                            .format(disp_time, progress[model].eidx, progress[model].uidx, \
-                                model, total_loss[model]/n_words[model], n_words[model]/duration, n_sents[model]/duration))
-                        last_time[model] = time.time()
-                        total_loss[model] = 0.
-                        n_sents[model] = 0
-                        n_words[model] = 0
-
-                    if configs[model].sampleFreq and progress[model].uidx % configs[model].sampleFreq == 0:
-                        x_small, x_mask_small, y_small = x_in[:, :, :4], x_mask_in[:, :4], y_in[:, :4]
-                        with graph[model].as_default():
-                            samples = model_set[model].sample(sess[model], x_small, x_mask_small)
-                        assert len(samples) == len(x_small.T) == len(y_small.T), \
-                        (len(samples), x_small.shape, y_small.shape)
-                        for xx, yy, ss in zip(x_small.T, y_small.T, samples):
-                            source = util.factoredseq2words(xx, num_to_source[model])
-                            target = util.seq2words(yy, num_to_target[model])
-                            sample = util.seq2words(ss, num_to_target[model])
-                            logging.info('SOURCE: {}'.format(source))
-                            logging.info('TARGET: {}'.format(target))
-                            logging.info('SAMPLE: {}'.format(sample))
-
-                    if configs[model].saveFreq and progress[model].uidx % configs[model].saveFreq == 0:
-                        logging.info('saving now ...save to {}'.format(configs[model].saveto))
-                        with graph[model].as_default():
-                            saver[model].save(sess[model], save_path=configs[model].saveto, global_step=progress[model].uidx)
-                        progress_path = '{0}-{1}.progress.json'.format(configs[model].saveto, progress[model].uidx)
-                        progress[model].save_to_json(progress_path)
-
-        # train by using mono datasets
-        logging.info('para data has been used out at uidx{}, now start using mono data. '.format(progress['A'].uidx))
-        end_of_iter = False
+        # TRAIN WITH MONO DATASET
         while True:
             # PREPARE DATA
             for model in models:
@@ -530,11 +463,10 @@ def train_dual(configs):
                 # logging.info(model_set[model].get_losses(sess[model],multi_x_in_for_x, multi_x_in_mask_for_x, smids_prepared_for_y, smids_prepared_mask_for_y,rk_tmp*(len(smids_flatten))) )
                 # exit()
 
-                # COUNT rk
-                rk = []
+                # COUNT lm_scores && bt_scores
+
                 lm_scores = []
                 bt_scores = []
-
                 smids_flatten = []
                 multi_source_sents = []
                 with graph[model].as_default():
@@ -545,21 +477,38 @@ def train_dual(configs):
                         multi_source_sents.append(source_sents[model][i])
 
                 multi_x_in_for_x, multi_x_in_mask_for_x, smids_prepared_for_y, smids_prepared_mask_for_y = \
-                    util.prepare_data(multi_source_sents,smids_flatten,configs[model].factors, maxlen=None)
+                    util.prepare_data(multi_source_sents,smids_flatten,factors, maxlen=None)
                 smids_prepared_for_x, smids_prepared_mask_for_x, multi_x_in_for_y, multi_x_in_mask_for_y = \
                     numpy.array([smids_prepared_for_y]), smids_prepared_mask_for_y, multi_x_in_for_x[0], multi_x_in_mask_for_x
-                for i,sample in enumerate(smids_flatten): 
-                    # count lm score
-                    sent = util.seq2words(sample,num_to_target[model])
-                    lm_score = score_a_sent(lm[ano(model)],sent)
-                    lm_scores.append(lm_score)
-                    # count bt score 
-                    tmp_x, tmp_x_mask, tmp_y, tmp_y_mask = \
-                        util.prepare_data([util.wrap_elements(sample)],[util.unwrap_elements(multi_source_sents[i])],\
-                            configs[model].factors, maxlen=None)
-                    with graph[ano(model)].as_default():
-                        bt_scores.append(model_set[ano(model)].get_losses(sess[ano(model)], \
-                        tmp_x, tmp_x_mask, tmp_y, tmp_y_mask)[0])
+                
+                # FOLLOWING CODE SEEMS INEFFICIENT 
+
+                # for sample in smids_flatten: 
+                #     # count lm score
+                #     sent = util.seq2words(sample,num_to_target[model])
+                #     lm_score = score_a_sent(lm[ano(model)],sent)
+                #     lm_scores.append(lm_score)
+                #     # count bt score 
+                #     tmp_x, tmp_x_mask, tmp_y, tmp_y_mask = \
+                #         util.prepare_data([util.wrap_elements(sample)],[util.unwrap_elements(multi_source_sents[i])],\
+                #             factors, maxlen=None)
+                #     with graph[ano(model)].as_default():
+                #         # loss = -logP(T|S), so here mutiply with -1
+                #         bt_scores.append(-1 * model_set[ano(model)].get_losses(sess[ano(model)], \
+                #         tmp_x, tmp_x_mask, tmp_y, tmp_y_mask)[0])
+
+                # count lm score
+                sents = [util.seq2words(sample,num_to_target[model]) for sample in smids_flatten]
+                lm_scores = score_sents(lm[ano(model)], sents)
+                # count bt score 
+                tmp_x, tmp_x_mask, tmp_y, tmp_y_mask = \
+                    util.prepare_data([util.wrap_elements(sample) for sample in smids_flatten],\
+                        [util.unwrap_elements(mss) for mss in multi_source_sents],\
+                        factors, maxlen=None)
+                with graph[ano(model)].as_default():
+                    # loss = -logP(T|S), so here mutiply with -1
+                    bt_scores = list((-1 * model_set[ano(model)].get_losses(sess[ano(model)], \
+                    tmp_x, tmp_x_mask, tmp_y, tmp_y_mask)))
 
                 # scores should be standardlized, here I update mean and std online 
                 for lm_sco,bt_sco in zip(lm_scores,bt_scores):
@@ -570,6 +519,9 @@ def train_dual(configs):
                     score_num[model] = util.update_num(score_num[model], 1)
                 lm_scores = util.standardlize(lm_scores,lm_score_mean[model],lm_score_std[model])
                 bt_scores = util.standardlize(bt_scores,bt_score_mean[model],bt_score_std[model])
+
+                # COUNT rk FOR DUAL LEARNING
+                rk = []
                 for lm_score,bt_score in zip(lm_scores,bt_scores):
                     rk.append( (lm_score*configs['dual']['alpha'] + bt_score*(1-configs['dual']['alpha'])) )
 
@@ -618,7 +570,7 @@ def train_dual(configs):
                     duration = time.time() - last_time[model]
                     disp_time = datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
                     logging.info('{0} Epoch: {1} Update: {2} MODEL:{3} Loss/word: {4} Words/sec: {5} Sents/sec: {6}'\
-                        .format(disp_time, progress[model].eidx, progress[model].uidx, \
+                        .format(disp_time, epoch, progress[model].uidx, \
                             model, total_loss[model]/n_words[model], n_words[model]/duration, n_sents[model]/duration))
                     last_time[model] = time.time()
                     total_loss[model] = 0.
@@ -720,6 +672,91 @@ def train_dual(configs):
                     progress_path = '{0}-{1}.progress.json'.format(configs[model].saveto, progress[model].uidx)
                     progress[model].save_to_json(progress_path)
                     break
+
+        for model in models:
+            logging.info('epoch {} back translation done. Saving now ...save to {}'.format(epoch, configs[model].saveto))
+            with graph[model].as_default():
+                saver[model].save(sess[model], save_path=configs[model].saveto, global_step=progress[model].uidx)
+            progress_path = '{0}-{1}.progress.json'.format(configs[model].saveto, progress[model].uidx)
+            progress[model].save_to_json(progress_path)
+        # TRAIN COMMONLY WITH PARALLEL DATA
+        if (configs['dual']['para']):
+            logging.info('mono data has been used out at uidx{}, now start using mono data... '.format(progress['A'].uidx))
+            end_of_iter = False
+            while True:
+                for model in models:
+                    para_source_sents[model],para_target_sents[model] = [],[]
+                    for num in range(beam_size):
+                        try:
+                            ss,tt = para_text_iterator[model].next()
+                            for per_ss,per_tt in zip(ss,tt):
+                                 para_source_sents[model].append(per_ss)
+                                 para_target_sents[model].append(per_tt)
+                        except StopIteration:
+                            end_of_iter = True
+                            break
+                if end_of_iter:
+                    break
+                for model in models:
+                    if len(para_source_sents[model][0][0]) != configs[model].factors:
+                        logging.error('Mismatch between number of factors in settings ({0}), and number in training corpus ({1})\n'.format(config.factors, len(source_sents[0][0])))
+                        sys.exit(1)
+                    x_in, x_mask_in, y_in, y_mask_in = util.prepare_data(
+                            para_source_sents[model], para_target_sents[model], configs[model].factors, maxlen=None)
+                    if x_in is None:
+                        logging.info('Minibatch with zero sample under length {0}'.format(configs[model].maxlen))
+                        continue
+                    write_summary_for_this_batch = configs[model].summaryFreq and ((progress[model].uidx % configs[model].summaryFreq == 0) or (configs[model].finish_after and progress[model].uidx % configs[model].finish_after == 0))
+                    (factors, seqLen, batch_size) = x_in.shape
+
+                    with graph[model].as_default():
+                        loss = updater[model].update(sess[model],x_in,x_mask_in,y_in,y_mask_in,write_summary_for_this_batch)
+                    total_loss[model] += loss
+                    n_sents[model] += batch_size
+                    n_words[model] += int(numpy.sum(y_mask_in))
+                    progress[model].uidx += 1
+
+                    if configs[model].dispFreq and progress[model].uidx % configs[model].dispFreq == 0:
+                        duration = time.time() - last_time[model]
+                        disp_time = datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
+                        logging.info('{0} Epoch: {1} Update: {2} MODEL: {3} Loss/word: {4} Words/sec: {5} Sents/sec: {6}'\
+                            .format(disp_time, epoch, progress[model].uidx, \
+                                model, total_loss[model]/n_words[model], n_words[model]/duration, n_sents[model]/duration))
+                        last_time[model] = time.time()
+                        total_loss[model] = 0.
+                        n_sents[model] = 0
+                        n_words[model] = 0
+
+                    if configs[model].beamFreq and progress[model].uidx % configs[model].beamFreq == 0:
+                        x_small, x_mask_small, y_small = x_in[:, :, :4], x_mask_in[:, :4], y_in[:,:4]
+                        with graph[model].as_default():
+                            samples = model_set[model].beam_search(sess[model], x_small, x_mask_small, beam_size)
+                        # samples is a list with shape batch x beam x len
+                        assert len(samples) == len(x_small.T) == len(y_small.T), (len(samples), x_small.shape, y_small.shape)
+                        for xx, yy, ss in zip(x_small.T, y_small.T, samples):
+                            source = util.factoredseq2words(xx, num_to_source[model])
+                            target = util.seq2words(yy, num_to_target[model])
+                            logging.info('SOURCE: {}'.format(source))
+                            logging.info('TARGET: {}'.format(target))
+                            for i, (sample_seq, cost) in enumerate(ss):
+                                sample = util.seq2words(sample_seq, num_to_target[model])
+                                msg = 'SAMPLE {}: {} Cost/Len/Avg {}/{}/{}'.format(
+                                    i, sample, cost, len(sample), cost/len(sample))
+                                logging.info(msg)
+
+                    if configs[model].saveFreq and progress[model].uidx % configs[model].saveFreq == 0:
+                        logging.info('saving now ...save to {}'.format(configs[model].saveto))
+                        with graph[model].as_default():
+                            saver[model].save(sess[model], save_path=configs[model].saveto, global_step=progress[model].uidx)
+                        progress_path = '{0}-{1}.progress.json'.format(configs[model].saveto, progress[model].uidx)
+                        progress[model].save_to_json(progress_path)
+
+        for model in models:
+            logging.info('epoch {} train done. Saving now ...save to {}'.format(epoch, configs[model].saveto))
+            with graph[model].as_default():
+                saver[model].save(sess[model], save_path=configs[model].saveto, global_step=progress[model].uidx)
+            progress_path = '{0}-{1}.progress.json'.format(configs[model].saveto, progress[model].uidx)
+            progress[model].save_to_json(progress_path)
 
         if progress[model].estop:
             break

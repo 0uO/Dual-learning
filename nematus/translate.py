@@ -31,7 +31,7 @@ def main(settings):
         os.environ["CUDA_VISIBLE_DEVICES"] = ""
         tf_config = tf.ConfigProto(device_count={'GPU': 0})
     else:
-	os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+        os.environ["CUDA_VISIBLE_DEVICES"] = "2"
         tf_config = tf.ConfigProto()
     tf_config.allow_soft_placement = True
     session = tf.Session(config=tf_config)

@@ -229,7 +229,7 @@ def update_mean(old_m=0, old_n=0, new_val=0):
         return new_val
     return (new_val+old_n*old_m)/(old_n+1)
 
-def update_std(old_std=0, old_m=0, old_n=0,new_val=0):
+def update_std(old_std=0, old_m=0, old_n=0, new_val=0):
     if old_n==0:
         return 0
     old_std2 = old_std**2

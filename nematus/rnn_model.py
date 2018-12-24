@@ -194,6 +194,7 @@ class Decoder(object):
         with tf.variable_scope("next_word_predictor"):
             W = None
             if config.tie_decoder_embeddings:
+                # mark
                 W = self.y_emb_layer.get_embeddings(factor=0)
                 W = tf.transpose(W)
             self.predictor = Predictor(config, batch_size, dropout_embedding,

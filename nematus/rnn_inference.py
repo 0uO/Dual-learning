@@ -260,7 +260,7 @@ def construct_beam_search_ops(models, beam_size):
     f_min = numpy.finfo(numpy.float32).min
     init_cost = [0.] + [f_min]*(beam_size-1) # to force first top k are from first hypo only
     init_cost = tf.constant(init_cost, dtype=tf.float32)
-    init_cost = tf.tile(init_cost, multiples=[batch_size/beam_size])
+    init_cost = tf.tile(init_cost, multiples=[batch_size/beam_size]) # duplications 
     ys_array = tf.TensorArray(
                 dtype=tf.int32,
                 size=translation_maxlen,

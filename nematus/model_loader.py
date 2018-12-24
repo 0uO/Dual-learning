@@ -117,6 +117,7 @@ def load_prior(config, sess, saver):
      tf.variables_initializer(prior_variables)
      sess.run(assign_tensors)
 
+
 def load_language_model(model_file_name):
     assert os.path.exists(model_file_name),'file: '+model_file_name+' not exists!'
     lm_factory = lm.lm_factory(model_file_name)

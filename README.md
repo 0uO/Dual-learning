@@ -1,4 +1,4 @@
-# Dual-learning for machine translation
+# Dual-Learning And Joint-Training for low resource machine translation
 -------
 
 An implementation of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179) and [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1803.00353) on tensorflow.
@@ -9,8 +9,8 @@ This project depend heavily on [nematus v0.3. ]( https://github.com/EdinburghNLP
 
 Nematus requires the following packages:
 
- - Python >= 2.7
- - tensorflow
+ - Python >= 2.7 （ After 2018.12.20 the master branch of namatus is based on py3.5. )
+ - tensorflow ( I use 1.4.0. )
 
 See more details about nematus in above link.
 
@@ -62,9 +62,28 @@ Description as their name. And you could write your own training script, see the
 For replaying the paper of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
 For replaying the paper [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
 
-#### TODO
+#### RESULT
 
-The result of dual learning isn't good, while joint training works well, later I would post the results.
+I randomly pick up 400000 pairs of parallel sentences from corpus [Europarl German-English](http://www.statmt.org/europarl/v7/de-en.tgz), divide them into 3 parts:
+
+- 80000 pairs sentences seen as parallel corpus.
+- 300000 pairs sentences seen as monolingual corpus.
+- 20000 pairs sentences as valid dataset.
+
+Then train a pair of initial models. 
+
+##### DUAL LEARNING  
+
+The result of dual learning isn't good, Later I would push the result.
+
+#### JOINT TRAINING
+
+ The joint training works well.
+
+| Model        | Original | Epoch1 | Epoch2 | Epoch3 | Epoch4 |
+|--------------|---------:|--------:|--------:|--------:|---------:|
+| EN-DE        | 3.5025    | 3.3009 | 3.6395  | 5.6207 |  9.0302  | 
+| DE-EN        | 4.8898    | 5.2038   | 6.3034   | 8.6047  | 13.0508 | 
 
 #### History
 
@@ -84,3 +103,7 @@ The result of dual learning isn't good, while joint training works well, later I
 ##### V1.3
 
 - bug fixed.
+
+##### V1.4
+
+- Improve the efficiency when creating fake corpus.
