@@ -76,7 +76,7 @@ Then train a pair of initial models.
 
 The result of dual learning isn't good, Later I would push the result.
 
-#### JOINT TRAINING
+##### JOINT TRAINING
 
  The joint training works well.
 
