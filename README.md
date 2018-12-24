@@ -45,9 +45,9 @@ Description as their name. And you could write your own training script, see the
 #### dual; parameters for dual learning.
 | parameter | description |
 |---        |---          |
-| --dual | active dual learning |
+| --dual | active dual learning or joint training |
 | --para | active parallel dataset using in dual learning |
-| --reinforce | active reinforcement learning |
+| --reinforce | active dual learning |
 | --alpha|weight of lm score in dual learning. |
 | --joint | active joint training |
 | --model_rev or --saveto_rev | reverse model file name |
@@ -60,7 +60,7 @@ Description as their name. And you could write your own training script, see the
 | --datasets_mono | parallel training corpus (one for source, and one for target.) | 
 
 For replaying the paper of [Dual Learning For Machine Translation](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
-For replaying the paper [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179), you need add  --reinforce.
+For replaying the paper [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/abs/1611.00179), you need add  --joint.
 
 #### RESULT
 
