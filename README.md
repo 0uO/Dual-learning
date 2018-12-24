@@ -70,7 +70,7 @@ I randomly pick up 400000 pairs of parallel sentences from corpus [Europarl Germ
 - 300000 pairs sentences seen as monolingual corpus.
 - 20000 pairs sentences as valid dataset.
 
-Then train a pair of initial models. 
+Then train a pair of initial models with 80000 pairs sentences for 35 epochs. 
 
 ##### DUAL LEARNING  
 
