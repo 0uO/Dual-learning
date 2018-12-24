@@ -80,10 +80,10 @@ The result of dual learning isn't good, Later I would push the result.
 
  The joint training works well.
 
-| Model        | Original | Epoch1 | Epoch2 | Epoch3 | Epoch4 |
-|--------------|---------:|--------:|--------:|--------:|---------:|
-| EN-DE        | 3.5025    | 3.3009 | 3.6395  | 5.6207 |  9.0302  | 
-| DE-EN        | 4.8898    | 5.2038   | 6.3034   | 8.6047  | 13.0508 | 
+| Model        | Original | Epoch1 | Epoch2 | Epoch3 | Epoch4 | Epoch5 | Epoch6 | 
+|--------------|---------:|--------:|--------:|--------:|---------:|---------:|---------:|
+| EN-DE        | 3.5025    | 3.3009 | 3.6395  | 5.6207 |  9.0302  | 11.0943| 12.5482 |
+| DE-EN        | 4.8898    | 5.2038   | 6.3034   | 8.6047  | 13.0508 | 16.3928| 18.4444 |
 
 #### History
 
