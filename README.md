@@ -107,3 +107,4 @@ The result of dual learning isn't good, Later I would push the result.
 ##### V1.4
 
 - Improve the efficiency when creating fake corpus.
+- bug fixed.

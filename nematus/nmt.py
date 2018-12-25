@@ -525,12 +525,13 @@ def train_dual(configs):
                 for lm_score,bt_score in zip(lm_scores,bt_scores):
                     rk.append( (lm_score*configs['dual']['alpha'] + bt_score*(1-configs['dual']['alpha'])) )
 
+                # count pro for each batch
+                rk_ano = util.squeeze([util.softmax(lst) for lst in util.split_list(bt_scores,beam_size)])
+
                 #  BACK-TRANSLATION LEARNING
                 with graph[ano(model)].as_default():
                     if configs['dual']['joint']:
                         # bt_scores: [S1,S2,S3...Sbeam]*batch
-                        # count pro for each batch
-                        rk_ano = util.squeeze([util.softmax(lst) for lst in util.split_list(bt_scores,beam_size)])
 
                         # count pro in all
                         # rk_ano = util.softmax(bt_scores) 
@@ -579,9 +580,9 @@ def train_dual(configs):
 
                 if configs[model].sampleFreq and progress[model].uidx % configs[model].sampleFreq == 0:
                     logging.info("lm_scores: {}\nmean: {}  std: {}\nbt_scores: {}\nmean: {}  std: {}\nrk: {}\nsents_num: {}\nP(X|Yt): {}"\
-                        .format('[lm_scores is pass. see nmt.py 621]', lm_score_mean[model],lm_score_std[model],\
-                            '[bt_scores is pass. see nmt.py 621]', bt_score_mean[model], bt_score_std[model], \
-                            '[rk is pass. see nmt.py 621]', score_num[model], util.split_list(rk_ano,beam_size)[0]))
+                        .format('[lm_scores is pass. see nmt.py 582]', lm_score_mean[model],lm_score_std[model],\
+                            '[bt_scores is pass. see nmt.py 582]', bt_score_mean[model], bt_score_std[model], \
+                            '[rk is pass. see nmt.py 582]', score_num[model], util.split_list(rk_ano,beam_size)[0]))
 
                     x_small, x_mask_small, y_small = multi_x_in_for_x[:, :, :4], multi_x_in_mask_for_x[:, :4], smids_prepared_for_y[:, :4]
                     with graph[model].as_default():
@@ -599,9 +600,9 @@ def train_dual(configs):
 
                 if configs[model].beamFreq and progress[model].uidx % configs[model].beamFreq == 0:
                     logging.info("lm_scores: {}\nmean: {}  std: {}\nbt_scores: {}\nmean: {}  std: {}\nrk: {}\nsents_num: {}\nP(X|Yt): {}"\
-                        .format('[lm_scores is pass. see nmt.py 621]', lm_score_mean[model],lm_score_std[model],\
-                            '[bt_scores is pass. see nmt.py 621]', bt_score_mean[model], bt_score_std[model], \
-                            '[rk is pass. see nmt.py 621]', score_num[model], util.split_list(rk_ano,beam_size)[0]))
+                        .format('[lm_scores is pass. see nmt.py 602]', lm_score_mean[model],lm_score_std[model],\
+                            '[bt_scores is pass. see nmt.py 602]', bt_score_mean[model], bt_score_std[model], \
+                            '[rk is pass. see nmt.py 602]', score_num[model], util.split_list(rk_ano,beam_size)[0]))
 
                     x_small, x_mask_small, y_small = multi_x_in_for_x[:, :, :1], multi_x_in_mask_for_x[:, :1], smids_prepared_for_y[:,:1]
                     with graph[model].as_default():
