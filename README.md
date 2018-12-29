@@ -50,7 +50,7 @@ Description as their name. And you could write your own training script, see the
 | --reinforce | active dual learning |
 | --alpha|weight of lm score in dual learning. |
 | --joint | active joint training |
-| --model_rev or --saveto_rev | reverse model file name |
+| --model_rev  \n --saveto_rev | reverse model file name |
 | --reload_rev | load existing model from this path. Set to \"latest_checkpoint\" to reload the latest checkpoint in the same directory of --model |
 | --source_lm | language model (source) |
 | --target_lm | language model (target) |
@@ -82,7 +82,7 @@ The result of dual learning isn't good, Later I would push the result.
 
 | Model        | Original | Epoch1 | Epoch2 | Epoch3 | Epoch4 | Epoch5 | Epoch6 |  Epoch7 |  Epoch8 |  Epoch9 |  Epoch10 |  Epoch11 |  Epoch12 |  Epoch13 | Epoch14 | 
 |--------------|---------:|--------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|
-| EN-DE        | 3.5025    | 3.3009 | 3.6395  | 5.6207 |  9.0302  | 11.0943| 12.5482 | 13.4416 | 14.0149 | 14.5954 | 14.8751 | 14.915 | 15.0892 | 15.0941 | 15.1386
+| EN-DE        | 3.5025    | 3.3009 | 3.6395  | 5.6207 |  9.0302  | 11.0943| 12.5482 | 13.4416 | 14.0149 | 14.5954 | 14.8751 | 14.9155 | 15.0892 | 15.0941 | 15.1386
 | DE-EN        | 4.8898    | 5.2038   | 6.3034   | 8.6047  | 13.0508 | 16.3928| 18.4444 | 19.6504 | 20.3632 | 20.7215 | 21.0472 | 21.3191 | 21.6728 | 21.8632 | 22.0694
 
 #### History
